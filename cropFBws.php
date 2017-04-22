@@ -19,8 +19,8 @@ limitations under the License.*/
 		protected static $dbInstance;
 		public static function factory(){
 			if(!self::$dbInstance){
-				$c = parse_ini_file("../secure/config.ini", true);
-				self::$dbInstance = new PDO("mysql:host=hauntedbeescom.fatcowmysql.com;dbname=".$c["database"]["schema"], $c["database"]["username"], $c["database"]["password"]);
+				$c = parse_ini_file("/whatever/your/path/to/your/config/is/config.ini", true);
+				self::$dbInstance = new PDO("mysql:host=".$c["database"]["host"].";dbname=".$c["database"]["schema"], $c["database"]["username"], $c["database"]["password"]);
 			}
 			return self::$dbInstance;
 		}
