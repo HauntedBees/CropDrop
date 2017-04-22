@@ -25,7 +25,7 @@ var fbFuncs = {
 		}
 		$.ajax({
 			type: "POST", dataType: "JSON",
-			url: "http://hauntedbees.com/webService/cropFBws.php?function=SubmitScore",
+			url: "cropFBws.php?function=SubmitScore",
 			data: { 
 				"userid": fbFuncs.authDetails.userID,
 				"level": level, 
@@ -68,7 +68,7 @@ var fbFuncs = {
 				}
 				$.ajax({
 					type: "GET", dataType: "JSON",
-					url: "http://hauntedbees.com/webService/cropFBws.php?function=GetHighScoresOrTimes",
+					url: "cropFBws.php?function=GetHighScoresOrTimes",
 					data: { 
 						"users": users,
 						"level": level, 
@@ -145,7 +145,7 @@ var fbFuncs = {
 				fbFuncs.connected = true;
 				$.ajax({
 					type: "POST", dataType: "JSON",
-					url: "http://hauntedbees.com/webService/cropFBws.php?function=SaveUser",
+					url: "cropFBws.php?function=SaveUser",
 					data: { 
 						"userid": fbFuncs.authDetails.userID,
 						"name": res.first_name, 
