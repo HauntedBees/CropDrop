@@ -30,6 +30,7 @@ The following JavaScript files need to be added to the "lib" directory:
 * [jQuery v2.2.1](https://code.jquery.com/jquery-2.2.1.js) or any other compatible version (as **lib/jquery.js**).
 * [jQuery.path v0.0.1](https://github.com/weepy/jquery.path) or any other compatible version (as **lib/jquery.path.js**).
 * [FastClick Polyfill v1.0.1](https://github.com/ftlabs/fastclick) or any other compatible version as (**lib/fastclick.js**).
+
 Additionally, [Cordova](https://cordova.apache.org/) is required to build the project to a native mobile app, and the following plugins are used:
 * [StatusBar](https://github.com/apache/cordova-plugin-statusbar)
 * [NativeStorage](https://github.com/TheCocoaProject/cordova-plugin-nativestorage)
