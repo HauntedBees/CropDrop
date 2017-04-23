@@ -172,7 +172,7 @@ var wateringGame = {
 		sounds.playSound("win");
 		$(".overlayTap").show();
 		setTimeout(function() { $("#overlayButtonsC").show(); }, 1000);
-		$("#overlayText").html("Level Complete!" + appendedHtml);
+		$("#overlayText").show().html("Level Complete!" + appendedHtml);
 	},
 	createNewShipment: function() {
 		if(wateringGame.inTutorial){ return; }
