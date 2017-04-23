@@ -266,7 +266,14 @@ table .val { text-align: right; width: 15% }
 .HD .sprite { background-image: url("images/sheet_HD.png") !important }
 .HD .infoBar { background-image: url("images/info_HD.png") !important }
 .HD .infoBar.any { background-image: url("images/info_all_HD.png") !important }
+
 .acc .sprite { background-image: url("images/sheet_acc.png") !important }
+.cb .sprite { background-image: url("images/sheet_cb.png") !important }
+.cb .infoBar { background-image: url("images/info_cb.png") !important }
+
+.acc.HD .sprite { background-image: url("images/sheet_HD_acc.png") !important }
+.cb.HD .sprite { background-image: url("images/sheet_HD_cb.png") !important }
+.cb.HD .infoBar { background-image: url("images/info_HD_cb.png") !important }
 .infoBar {
 	background-image: url("images/info.png");
 	display: inline-block;

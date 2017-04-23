@@ -67,14 +67,15 @@ function SetUpLevelSelect() {
 		$("#grafs").text(settings.HDgrafs ? "HD Graphics On" : "HD Graphics Off");
 	});
 	$("#acc").on("click", function() {
-		settings.accGrafs = !settings.accGrafs;
-		if(!settings.accGrafs) {
-			$("#game").removeClass("acc");
-		} else {
+		settings.accGrafs = (settings.accGrafs + 1) % 3;
+		$("#game").removeClass("acc cb");
+		if(settings.accGrafs == 1) {
 			$("#game").addClass("acc");
+		} else if(settings.accGrafs == 2) {
+			$("#game").addClass("cb");
 		}
 		sounds.playSound("tap");
-		$("#acc").text(settings.accGrafs ? "Colored Outlines On" : "Colored Outlines Off");
+		$("#acc").text(settings.accGrafs == 0 ? "Standard Vision" : (settings.accGrafs == 1 ? "Colored Outlines" : "Colorblind Mode"));
 	});
 	$("#gplay").on("click", function() { sounds.playSound("tap"); });
 	$("#fbConnect").on("click", function() {

@@ -27,7 +27,7 @@ var menuNav = {
 		$("#sounds").text(settings.playSounds ? "Sound On" : "Sound Off");
 		$("#musics").text(settings.playMusic ? "Music On" : "Music Off");
 		$("#grafs").text(settings.HDgrafs ? "HD Graphics On" : "HD Graphics Off");
-		$("#acc").text(settings.accGrafs ? "Colored Outlines On" : "Colored Outlines Off");
+		$("#acc").text(settings.accGrafs == 0 ? "Standard Vision" : (settings.accGrafs == 1 ? "Colored Outlines" : "Colorblind Mode"));
 		$("#optionsMenu,#optionsOverlay").show();
 		$("body").attr("data-inMenu", "true");
 	},
