@@ -156,11 +156,11 @@ var commonDistributions = {
 	cornStrob: { tomato: 0.35, strawberry: 0.14, cucumber: 0.35, carrot: 0.1, corn: 0.03, pumpkin: 0.03 }
 };
 var levelData = [
-	{ mission: "Harvest 15 vegetables.", req: { any: 15 }, time: 5940, dist: "standard" },
+	{ mission: "Harvest 15 crops.", req: { any: 15 }, time: 5940, dist: "standard" },
 
-	{ mission: "Harvest 30 vegetables in under a minute.", req: { any: 30 }, time: 60, dist: "standardEasy" },
+	{ mission: "Harvest 30 crops in under a minute.", req: { any: 30 }, time: 60, dist: "standardEasy" },
 	{ mission: "Harvest 20 tomatoes in under a minute.", req: { tomato: 20 }, time: 60, dist: "easyBonusTomatoes" },
-	{ mission: "Harvest 100 vegetables in under five minutes.", req: { any: 100 }, time: 300, dist: "standardEasy" },
+	{ mission: "Harvest 100 crops in under five minutes.", req: { any: 100 }, time: 300, dist: "standardEasy" },
 	{ mission: "Harvest 10 corn in under two minutes.", req: { corn: 10 }, time: 120, dist: "bonusCorn" },
 	{ mission: "Harvest two pumpkins in under three minutes.", req: { pumpkin: 2 }, time: 180, dist: "standard" },
 
@@ -177,7 +177,7 @@ var levelData = [
 	{ mission: "Don't harvest any tomatos, cucumbers, or strawberries! Also get 1000 point I guess.", req: { score: 1000 }, restrictions: ["tomato", "cucumber", "strawberry"], time: 600, dist: "bortLessPump" },
 
 	{ mission: "Get 1000 points in under 3 minutes... but only harvests of three crops or more will give you points!", req: { score: 1000 }, minHarvest: 3, time: 180, dist: "standard" },
-	{ mission: "Harvest 500 vegetables in under 6 minutes.", req: { any: 500 }, time: 360, dist: "standard" },
+	{ mission: "Harvest 500 crops in under 6 minutes.", req: { any: 500 }, time: 360, dist: "standard" },
 	{ mission: "Get 1500 points in under 2 minutes... but only harvests of four crops or more will give you points!", req: { score: 1500 }, minHarvest: 4, time: 120, dist: "standard" },
 	{ mission: "Get 2000 points in under 3 minutes without harvesting any pumpkins.", req: { score: 2000 }, restrictions: ["pumpkin"], time: 180, dist: "migaPumpkin" },
 	{ mission: "Get 2000 points, harvesting no corn or strawberries. Only harvests of three crops or more will give you points!", req: { score: 2000 }, restrictions: ["corn", "strawberry"], minHarvest: 3, time: 600, dist: "cornStrob" },
