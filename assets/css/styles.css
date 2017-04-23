@@ -90,7 +90,7 @@ body {
 	width: 85%;
 	z-index: 1002;
 }
-#optionsMenu { height: 50%; top: 25% }
+#optionsMenu { height: 60%; top: 20% }
 #aboutMenu { height: 75%; top: 10% }
 #aboutContainer { height: 100% }
 #optionsOverlay {
@@ -265,6 +265,7 @@ table .val { text-align: right; width: 15% }
 .HD .sprite { background-image: url("images/sheet_HD.png") !important }
 .HD .infoBar { background-image: url("images/info_HD.png") !important }
 .HD .infoBar.any { background-image: url("images/info_all_HD.png") !important }
+.acc .sprite { background-image: url("images/sheet_acc.png") !important }
 .infoBar {
 	background-image: url("images/info.png");
 	display: inline-block;

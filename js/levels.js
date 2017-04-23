@@ -66,6 +66,16 @@ function SetUpLevelSelect() {
 		sounds.playSound("tap");
 		$("#grafs").text(settings.HDgrafs ? "HD Graphics On" : "HD Graphics Off");
 	});
+	$("#acc").on("click", function() {
+		settings.accGrafs = !settings.accGrafs;
+		if(!settings.accGrafs) {
+			$("#game").removeClass("acc");
+		} else {
+			$("#game").addClass("acc");
+		}
+		sounds.playSound("tap");
+		$("#acc").text(settings.accGrafs ? "Colored Outlines On" : "Colored Outlines Off");
+	});
 	$("#gplay").on("click", function() { sounds.playSound("tap"); });
 	$("#fbConnect").on("click", function() {
 		sounds.playSound("tap");

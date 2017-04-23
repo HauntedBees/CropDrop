@@ -27,6 +27,7 @@ var menuNav = {
 		$("#sounds").text(settings.playSounds ? "Sound On" : "Sound Off");
 		$("#musics").text(settings.playMusic ? "Music On" : "Music Off");
 		$("#grafs").text(settings.HDgrafs ? "HD Graphics On" : "HD Graphics Off");
+		$("#acc").text(settings.accGrafs ? "Colored Outlines On" : "Colored Outlines Off");
 		$("#optionsMenu,#optionsOverlay").show();
 		$("body").attr("data-inMenu", "true");
 	},

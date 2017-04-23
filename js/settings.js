@@ -11,13 +11,14 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.*/
-var SAVEDATAVERSION = "0.25";
+var SAVEDATAVERSION = "0.3";
 var settings = {
 	device: "browser",
 	playSounds: true,
 	playMusic: true,
 	wasUsingFB: false,
-	HDgrafs: false
+	HDgrafs: false,
+	accGrafs: false
 };
 var levelsCompleted = {};
 var sounds = {
@@ -87,6 +88,7 @@ function LoadGame() {
 	var s = window.localStorage.getItem("settings" + SAVEDATAVERSION);
 	if(s != null) { settings = JSON.parse(s); }
 	if(settings.HDgrafs) { $("#game").addClass("HD"); }
+	if(settings.accGrafs) { $("#game").addClass("acc"); }
 	var l = window.localStorage.getItem("levelsCompleted" + SAVEDATAVERSION);
 	if(l != null) { levelsCompleted = JSON.parse(l); }
 }
