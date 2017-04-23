@@ -79,7 +79,7 @@ var menuNav = {
 			if(!isNaN(levelNum)) { dt = thisLevel.time - li.bestTime; }
 			$("#levelInfoScoreSection").html("Best Score: " + li.highScore + "<br>Best Time: " + GetTimeAsString(dt));
 		} else {
-			$("#levelInfoScoreSection").html();
+			$("#levelInfoScoreSection").html("");
 		}
 	},
 	returnToMainMenu: function() {
