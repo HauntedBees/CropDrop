@@ -228,6 +228,7 @@ table .val { text-align: right; width: 15% }
 	height: 192px;
 	width: 192px;
 }
+.crop.paused { background: none }
 
 .crop_particle { position: absolute; z-index: 100 }
 

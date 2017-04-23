@@ -110,6 +110,7 @@ limitations under the License.*/
 	
 	$("#pause").on("click", function() {
 		wateringGame.paused = true;
+		$(".sprite").addClass("paused");
 		sounds.playSound("tap");
 		$(".overlayButtons, .overlayAltText").hide();
 		$(".overlayTap, #overlayButtonsA, #overlayText").show();
@@ -118,6 +119,7 @@ limitations under the License.*/
 	});
 	$(".unpause").on("click", function() {
 		wateringGame.paused = false;
+		$(".sprite").removeClass("paused");
 		sounds.playSound("yes");
 		$(".overlayTap").hide();
 	});
