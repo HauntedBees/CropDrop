@@ -141,7 +141,7 @@ var commonDistributions = {
 	lessCucumbers: { tomato: 0.28, strawberry: 0.28, cucumber: 0.25, carrot: 0.08, corn: 0.07, pumpkin: 0.04 },
 	twentythree: { tomato: 0.3, strawberry: 0.4, cucumber: 0.1, carrot: 0.05, corn: 0.1, pumpkin: 0.05 },
 	bort: { tomato: 0.15, strawberry: 0.15, cucumber: 0.15, carrot: 0.2, corn: 0.2, pumpkin: 0.15 },
-	bortLessPump: { tomato: 0.15, strawberry: 0.15, cucumber: 0.15, carrot: 0.25, corn: 0.25, pumpkin: 0.05 },
+	bortLessPump: { tomato: 0.15, strawberry: 0.15, cucumber: 0.15, carrot: 0.23, corn: 0.23, pumpkin: 0.09 },
 	migaPumpkin: { tomato: 0.31, strawberry: 0.31, cucumber: 0.1, carrot: 0, corn: 0.1, pumpkin: 0.08 },
 	cornStrob: { tomato: 0.35, strawberry: 0.14, cucumber: 0.35, carrot: 0.1	, corn: 0.03, pumpkin: 0.03 }
 };
