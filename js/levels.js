@@ -141,6 +141,7 @@ var commonDistributions = {
 	lessCucumbers: { tomato: 0.28, strawberry: 0.28, cucumber: 0.25, carrot: 0.08, corn: 0.07, pumpkin: 0.04 },
 	twentythree: { tomato: 0.3, strawberry: 0.4, cucumber: 0.1, carrot: 0.05, corn: 0.1, pumpkin: 0.05 },
 	bort: { tomato: 0.15, strawberry: 0.15, cucumber: 0.15, carrot: 0.2, corn: 0.2, pumpkin: 0.15 },
+	bortLessPump: { tomato: 0.15, strawberry: 0.15, cucumber: 0.15, carrot: 0.25, corn: 0.25, pumpkin: 0.05 },
 	migaPumpkin: { tomato: 0.31, strawberry: 0.31, cucumber: 0.1, carrot: 0, corn: 0.1, pumpkin: 0.08 },
 	cornStrob: { tomato: 0.35, strawberry: 0.14, cucumber: 0.35, carrot: 0.1	, corn: 0.03, pumpkin: 0.03 }
 };
@@ -163,7 +164,7 @@ var levelData = [
 	{ mission: "Get 3000 points in under a minute.", req: { score: 3000 }, time: 60, dist: "standard" },
 	{ mission: "Harvest thirty tomatos and no carrots.", req: { tomato: 30 }, restrictions: ["carrot"], time: 600, dist: "standardEasy" },
 	{ mission: "Get 1000 points in under 2 minutes without harvesting a single tomato!", req: { score: 1000 }, restrictions: ["tomato"], time: 120, dist: "standardEasy" },
-	{ mission: "Don't harvest any tomatos, cucumbers, or strawberries! Also get 1000 point I guess.", req: { score: 1000 }, restrictions: ["tomato", "cucumber", "strawberry"], time: 600, dist: "bort" },
+	{ mission: "Don't harvest any tomatos, cucumbers, or strawberries! Also get 1000 point I guess.", req: { score: 1000 }, restrictions: ["tomato", "cucumber", "strawberry"], time: 600, dist: "bortLessPump" },
 
 	{ mission: "Get 1000 points in under 3 minutes... but only harvests of three crops or more will give you points!", req: { score: 1000 }, minHarvest: 3, time: 180, dist: "standard" },
 	{ mission: "Harvest 500 vegetables in under 6 minutes.", req: { any: 500 }, time: 360, dist: "standard" },
