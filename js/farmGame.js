@@ -222,7 +222,7 @@ var wateringGame = {
 				types.splice(idx, 1);
 			}
 		}
-		sounds.playSound("harvest5");
+		sounds.playSound("newShipment");
 		$(".infoBar").slideDown();
 	},
 	appendCropToShipment: function(crop, min, max) {
@@ -284,6 +284,7 @@ var wateringGame = {
 				wateringGame.shipmentDifficulty++;
 				if($(".timeParticle").length > 4) { $(".timeParticle:lt(3)").remove(); }
 				$("#game").append("<div class='anim timeParticle'><span>" + tAdd + "</span></div>");
+				sounds.playSound("completeShipment");
 			}
 			$("#shipItems").html("<div class='infoBar OK'></div>");
 		}

@@ -4,7 +4,7 @@
 Crop Drop is a [Cordova](https://cordova.apache.org/)-based puzzle game.
 
 ## license
-Crop Drop's source code is licensed with the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0). Media assets are licensed with the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license, with the exception of the following:
+Crop Drop's source code is licensed with the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0). All media assets are licensed with the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license, with the exception of the following:
 *   "[Happy Arcade Tune](http://opengameart.org/content/happy-arcade-tune)" by [rezoner](http://opengameart.org/users/rezoner), available under the [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/) license. Copyright © 2013 rezoner.
 *   "[No Chains (Instrumental Version)](http://opengameart.org/content/no-chainsinstrumental-version)" by [mvrasseli](http://opengameart.org/users/mvrasseli), available under the [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/) license. Copyright © 2014 Marcus Rasseli.
 *   "[Country Style Guitar Intro](https://www.freesound.org/people/Soughtaftersounds/sounds/145416/)" by [Varazuvi](http://www.varazuvi.com), available under the [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/) license. Copyright © 2011 Varavuzi™.
@@ -24,6 +24,7 @@ Crop Drop's source code is licensed with the [Apache 2.0 License](http://www.apa
 *   "[Giant Pumpkin Seedlings](https://www.flickr.com/photos/9993075@N06/2554064933)" by [Nick Ares](https://www.flickr.com/photos/aresauburnphotos/), available under the [CC-BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) license. Copyright © 2008 Nick Ares.
 *   "[Pumpkin Patch 100_9296](https://www.flickr.com/photos/kams_world/4047724512)" by [Kam Abbott](https://www.flickr.com/photos/kams_world/), available under the [CC-BY 2.0](https://creativecommons.org/licenses/by/2.0/) license. Copyright © 2009 Kam Abbott.
 *   "[Wooden hourglass 3](https://commons.wikimedia.org/wiki/File:Wooden_hourglass_3.jpg)" by [S Sepp](https://commons.wikimedia.org/wiki/User:S_Sepp), available under the [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) license. Copyright © 2007 S Sepp.
+*   All other audio files and HD graphics images are in the Public Domain.
 
 ## dependencies
 The following JavaScript files need to be added to the "lib" directory:
