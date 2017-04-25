@@ -367,7 +367,7 @@ table .val { text-align: right; width: 15% }
     z-index: -5;
 }
 
-.scoreParticle, .timeParticle {
+.scoreParticle, .timeParticle, .comboParticle {
 	animation: score;
 	animation-duration: 1s;
 	animation-iteration-count: 1;
@@ -378,16 +378,35 @@ table .val { text-align: right; width: 15% }
 	position: absolute;
 	width: 143px;
 }
+.comboParticle {
+	animation: score2;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	background-image: url("images/particles_big.png");
+	height: 348px;
+	width: 429px;
+	right: 0%;
+}
 .scoreParticle { right: 15% }
 .timeParticle { left: 40% }
 .scoreParticle.f2, .timeParticle.f2 { background-position: -143px 0 }
-.scoreParticle > span, .timeParticle > span {
+.comboParticle.f2 { background-position: -429px 0 }
+.scoreParticle > span, .timeParticle > span, .comboParticle > span {
 	display: table-cell;
 	font-size: 32px;
     height: 116px;
     text-align: center;
     vertical-align: middle;
     width: 143px;
+}
+.comboParticle > span { height: 348px; width: 429px }
+.comboParticle > span > span { font-size: 72px }
+@keyframes score2 {
+	0% { bottom: 0; opacity: 0; }
+	45% { bottom: 10px; opacity: 1; }
+	55% { bottom: 20px; opacity: 1; }
+	100% { bottom: 30px; opacity: 0; }
 }
 @keyframes score {
 	0% { top: 40px; opacity: 0; }

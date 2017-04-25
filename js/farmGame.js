@@ -14,7 +14,7 @@ limitations under the License.*/
 var wateringGame = {
 	mode: 2, 
 	modeTimerIdx: 0, modeCounter: 0, 
-	totalMultiplier: 1,
+	totalMultiplier: 1, chainCount: 1, 
 	timerIdx: 0,
 	paused: false, gameIsOver: false, 
 	inStoryMode: false, inTutorial: false, levelNum: 0, 
@@ -31,6 +31,7 @@ var wateringGame = {
 		$(".forbidden").removeClass("forbidden");
 		$(".overlayTap").hide();
 		$(".infoBar.main > span").text("0");
+		$(".comboParticle").remove();
 		wateringGame.mode = mode || 2;
 		wateringGame.restrictions = [];
 		wateringGame.shipmentDifficulty = 1;
@@ -135,6 +136,7 @@ var wateringGame = {
 			wateringGame.grow(x, y + 1, false, type);
 			wateringGame.grow(x, y - 1, false, type, true);
 			sounds.playSound("bweep");
+			wateringGame.chainCount = 1;
 			wateringGame.totalMultiplier = 1;
 			wateringGame.soundPlayedHere = 0;
 			setTimeout(wateringGame.attemptFinishTurn, wateringGame.gameSpeed);
@@ -519,9 +521,14 @@ var wateringGame = {
 			if($(".timeParticle").length > 4) { $(".timeParticle:lt(3)").remove(); }
 			$("#game").append("<div class='anim timeParticle'><span>" + summationTime + "</span></div>");
 		}
+		if(wateringGame.chainCount > 1) {
+			$(".comboParticle").remove();
+			$("#game").append("<div class='anim comboParticle'><span><span>" + wateringGame.chainCount + "</span>chain</span></div>");
+		}
 		$("#cropScore").text(wateringGame.score);
 		wateringGame.drawBoard();
 		wateringGame.totalMultiplier += 0.4;
+		wateringGame.chainCount += 1;
 		setTimeout(wateringGame.attemptFinishTurn, wateringGame.gameSpeed);
 	},
 	getNeighbors: function(type, x, y, existing, ignoreStage) {
