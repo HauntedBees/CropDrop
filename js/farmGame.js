@@ -21,6 +21,7 @@ var wateringGame = {
 	soundPlayedHere: 0, minHarvestRequirement: 0, 
 	animating: false, animSpeed: 250, 
 	width: 0, height: 0, 
+	whackers: 0, whackQueued: false, 
 	shipment: {}, restrictions: [], 
 	start: function(width, height, mode, levelNumber, isTutorial) {
 		wateringGame.gameIsOver = false;
@@ -58,11 +59,13 @@ var wateringGame = {
 				menuNav.quitToMenuInGame();
 				return;
 			}
+			wateringGame.whackers = Math.min(3, Math.floor(levelNumber / 8));
 			wateringGame.initDistribution(ld.dist);
 			wateringGame.minHarvestRequirement = ld.minHarvest || 0;
 			$("#overlayText").text((levelNumber == 0 ? "Tutorial: " : "Mission: ") + ld.mission);
 			wateringGame.createShipmentFromLevelData(ld);
 		} else {
+			wateringGame.whackers = 0;
 			wateringGame.levelNum = undefined;
 			wateringGame.initDistribution("standard");
 			if(mode == 2) {
@@ -119,6 +122,18 @@ var wateringGame = {
 				}	
 			}
 		}
+
+		wateringGame.whackQueued = false;
+		$("#weedWhackBtn").text("x" + wateringGame.whackers);
+		$(document).off("click", "#weedWhackBtn");
+		$(document).on("click", "#weedWhackBtn", function() {
+			if(wateringGame.whackQueued || wateringGame.whackers == 0) { return; }
+			if(wateringGame.locked) {
+				whackQueued = true;
+			} else {			
+				wateringGame.weedWhack();
+			}
+		});
 		$(document).off("click", ".crop");
 		$(document).on("click", ".crop", function() {
 			if(wateringGame.locked) { return; }
@@ -144,6 +159,7 @@ var wateringGame = {
 		wateringGame.settleBoard(true);
 		wateringGame.drawBoard();
 	},
+	addWhacker: function() { $("#weedWhackBtn").text("x" + (++wateringGame.whackers)); },
 	count: function() {
 		var count = 0;
 		for(var x = 0; x < wateringGame.width; x++) {
@@ -356,6 +372,7 @@ var wateringGame = {
 			setTimeout(function() {
 				wateringGame.drawBoard();
 				wateringGame.locked = false;
+				if(wateringGame.whackQueued) { wateringGame.weedWhack(); }
 			}, wateringGame.animSpeed);
 		}
 	},
@@ -449,6 +466,7 @@ var wateringGame = {
 				wateringGame.findPairSettle();
 			}
 			wateringGame.locked = false;
+			if(wateringGame.whackQueued) { wateringGame.weedWhack(); }
 			return;
 		}
 		var summationScore = 0, summationTime = 0;
@@ -459,12 +477,14 @@ var wateringGame = {
 			for(var j = 0; j < pair.length; j++) { centerx += Math.floor(pair[j] / 10); }
 			var pairLen = pair.length;
 			centerx /= pairLen;
+			var tileType = "";
 			for(var j = 0; j < pairLen; j++) {
 				var val = pair[j];
 				var x = Math.floor(val/10);
 				var y = val - (x * 10);
 				var tile = wateringGame.board[y][x];
 				if(tile != 0) {
+					tileType = tile.type;
 					var $info = $("#info_" + tile.type);
 					var count = parseInt($info.text()) + 1;
 					$info.text(count);
@@ -493,6 +513,23 @@ var wateringGame = {
 					});
 					$newGuy.animate({path: path}, 2000, "swing", function() { $(this).remove() });
 				}
+			}
+			switch(tileType) {
+				case "tomato":
+				case "cucumber":
+				case "strawberry":
+				case "corn":
+					if(pairLen > 4) { wateringGame.addWhacker(); }
+					break;
+				case "carrot":
+					if(pairLen > 3) { wateringGame.addWhacker(); }
+					break;
+				case "pumpkin":
+					if(pairLen > 2) {
+						wateringGame.addWhacker();
+						wateringGame.addWhacker();
+					}
+					break;
 			}
 			var finalScore = Math.floor(wateringGame.totalMultiplier * score);
 			if(wateringGame.soundPlayedHere != wateringGame.totalMultiplier) {
@@ -524,6 +561,7 @@ var wateringGame = {
 		if(wateringGame.chainCount > 1) {
 			$(".comboParticle").remove();
 			$("#game").append("<div class='anim comboParticle'><span><span>" + wateringGame.chainCount + "</span>chain</span></div>");
+			if(wateringGame.chainCount > 2) { wateringGame.addWhacker(); }
 		}
 		$("#cropScore").text(wateringGame.score);
 		wateringGame.drawBoard();
@@ -603,6 +641,29 @@ var wateringGame = {
 				if(tile != 0) { wateringGame.addCrop($crop, tile); }
 			}
 		}
+	},
+	weedWhack: function() {
+		wateringGame.whackers--;
+		$("#weedWhackBtn").text("x" + wateringGame.whackers);
+		sounds.playSound("mow");
+		wateringGame.locked = true;
+		$(".cropRow:nth-last-child(2)").append("<div class='weedWhack'></div>");
+		setTimeout(function() {
+			for(var x = wateringGame.width - 1; x >= 0; x--) {
+				var y = wateringGame.height - (x % 2 == 0 ? 1 : 2);
+				wateringGame.shred(x, y);
+			}
+			wateringGame.attemptFinishTurn();
+			$(".weedWhack").remove();
+			wateringGame.whackQueued = false;
+		}, 1000);
+	},
+	shred: function(x, y) {
+		var $crop = $("#crop" + x + "_" + y);
+		if(!$crop.length) { return; }
+		var tile = 0;
+		$crop.empty();
+		wateringGame.board[y][x] = tile;
 	},
 	initDistribution: function(dist) {
 		if(typeof(dist) === "string") { dist = commonDistributions[dist]; }

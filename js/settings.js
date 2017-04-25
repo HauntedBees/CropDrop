@@ -26,7 +26,7 @@ var sounds = {
 	yes: "assets/sounds/confirmyes.wav", win: "assets/sounds/win.wav", lose: "assets/sounds/lose.wav",
 	harvest1: "assets/sounds/harvest1.wav", harvest2: "assets/sounds/harvest2.wav", harvest3: "assets/sounds/harvest3.wav", 
 	harvest4: "assets/sounds/harvest4.wav", harvest5: "assets/sounds/harvest5.wav", success: "assets/sounds/success.wav",
-	newShipment: "assets/sounds/notify.wav", completeShipment: "assets/sounds/chaching.wav",
+	newShipment: "assets/sounds/notify.wav", completeShipment: "assets/sounds/chaching.wav", mow: "assets/sounds/mow.wav", 
 	playSound: function(id) {
 		if(!settings.playSounds) { return; }
 		var s = new Audio(sounds[id]);
