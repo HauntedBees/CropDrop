@@ -166,7 +166,7 @@ var commonDistributions = {
 	cornStrob: { tomato: 0.35, strawberry: 0.14, cucumber: 0.35, carrot: 0.1, corn: 0.03, pumpkin: 0.03 }
 };
 var levelData = [
-	{ mission: "Harvest 15 crops.", req: { any: 15 }, time: 5940, dist: "standard" },
+	{ mission: "Harvest 20 crops.", req: { any: 20 }, time: 5940, dist: "standard" },
 	// 1
 	{ mission: "Harvest 30 crops in under a minute.", req: { any: 30 }, time: 60, dist: "standardEasy" },
 	{ mission: "Harvest 20 tomatoes in under a minute.", req: { tomato: 20 }, time: 60, dist: "easyBonusTomatoes" },

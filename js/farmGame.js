@@ -129,6 +129,7 @@ var wateringGame = {
 		$("#weedWhackBtn > span").text("x" + wateringGame.whackers);
 		$(document).off("click", "#weedWhackBtn");
 		$(document).on("click", "#weedWhackBtn", function() {
+			if(wateringGame.inTutorial && !tutorialHandler.validMove("weed")) { return; }
 			if(wateringGame.whackQueued || wateringGame.whackers == 0) { return; }
 			if(wateringGame.locked) {
 				whackQueued = true;

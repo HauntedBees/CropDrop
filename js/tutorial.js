@@ -25,7 +25,8 @@ var tutorialStates = [
 	{requiredClick: [0, 7], text: "Oh dang! It's rotten! If pumpkins are advanced past maturity, either by tapping them or by tapping a crop next to them, they'll wither away! Tap a withered pumpkin to remove it from the field."},
 	{requiredClick: [0, 6], text: "You've got the basics down, but let me just show you what you can accomplish if you're precise in your harvesting choices. Try harvesting this cucumber..."}, 
 	{requiredClick: [2, 5], text: "...and now pick this tomato!"}, 
-	{lastStep: true, text: "Seven tomatoes in one harvest! Try getting a harvest that big outside of this tutorial and you'll be the talk of the town! That's the tutorial! Go away now."}
+	{requiredClick: 0, text: "Seven tomatoes in one harvest! And with a harvest that big you're gonna earn yourself some WEED WHACKERS! Tap the Weed Whacker button to use one!" },
+	{lastStep: true, text: "Amazing! The weeds were whacked! Use these babies if you're ever in trouble, but remember: you gotta earn 'em! That's the tutorial! Harvest one more crop to beat the level!"}
 ];
 var tutorialHandler = {
 	state: 0,
@@ -64,6 +65,14 @@ var tutorialHandler = {
 		if(!tutorialStates[tutorialHandler.state].lastStep) {
 			var properCoords = tutorialStates[tutorialHandler.state].requiredClick;
 			$("#pointer").show();
+			if(properCoords == 0) {
+				var pos = $("#weedWhackBtn").position();
+				$("#pointer").animate({
+					left: (pos.left + 150) + "px",
+					top: (pos.top - 133) + "px"
+				}, 500);
+				return;
+			}
 			if(immediate) {
 				setTimeout(function() {
 					var pos = $("#crop" + properCoords[0] + "_" + properCoords[1]).position();
@@ -82,10 +91,16 @@ var tutorialHandler = {
 		}
 	},
 	validMove: function($crop) {
-		if(tutorialStates[tutorialHandler.state].lastStep) {
-			wateringGame.winLevel();
-			return true;
+		var success = tutorialStates[tutorialHandler.state].requiredClick == 0;
+		if($crop == "weed") {
+			if(success) {
+				tutorialHandler.state++;
+				tutorialHandler.updateState();
+			}
+			return success;
 		}
+		if(success) { return false; }
+		if(tutorialStates[tutorialHandler.state].lastStep) { return true; }
 		var $cell = $crop.parent();
 		var x = parseInt($cell.attr("data-x"));
 		var y = parseInt($cell.attr("data-y"));
