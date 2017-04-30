@@ -18,7 +18,7 @@ var wateringGame = {
 	timerIdx: 0,
 	paused: false, gameIsOver: false, 
 	inStoryMode: false, inTutorial: false, levelNum: 0, 
-	soundPlayedHere: 0, minHarvestRequirement: 0, 
+	soundPlayedHere: 0, minHarvestRequirement: 0, minChainRequirement: 0, 
 	animating: false, animSpeed: 250, 
 	width: 0, height: 0, 
 	whackers: 0, whackQueued: false, 
@@ -52,6 +52,7 @@ var wateringGame = {
 		wateringGame.shipment = {};
 		$("#shipItems").html("<div class='infoBar OK'></div>");
 		wateringGame.minHarvestRequirement = 0;
+		wateringGame.minChainRequirement = 0;
 		if(wateringGame.inStoryMode) {
 			wateringGame.levelNum = levelNumber;
 			var ld = levelData[levelNumber];
@@ -62,6 +63,7 @@ var wateringGame = {
 			wateringGame.whackers = Math.min(3, Math.floor(levelNumber / 8));
 			wateringGame.initDistribution(ld.dist);
 			wateringGame.minHarvestRequirement = ld.minHarvest || 0;
+			wateringGame.minChainRequirement = ld.minChain || 0;
 			$("#overlayText").text((levelNumber == 0 ? "Tutorial: " : "Mission: ") + ld.mission);
 			wateringGame.createShipmentFromLevelData(ld);
 		} else {
@@ -539,6 +541,7 @@ var wateringGame = {
 				sounds.playSound("harvest" + soundIdx);
 				wateringGame.soundPlayedHere = wateringGame.totalMultiplier;
 			}
+			if(wateringGame.chainCount < wateringGame.minChainRequirement) { finalScore = 0; }
 			if(finalScore > 0) {
 				wateringGame.score += finalScore;
 				summationScore += finalScore;

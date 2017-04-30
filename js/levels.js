@@ -162,37 +162,36 @@ var commonDistributions = {
 	lessCucumbers: { tomato: 0.28, strawberry: 0.28, cucumber: 0.25, carrot: 0.08, corn: 0.07, pumpkin: 0.04 },
 	twentythree: { tomato: 0.3, strawberry: 0.4, cucumber: 0.1, carrot: 0.05, corn: 0.1, pumpkin: 0.05 },
 	bort: { tomato: 0.15, strawberry: 0.15, cucumber: 0.15, carrot: 0.2, corn: 0.2, pumpkin: 0.15 },
-	bortLessPump: { tomato: 0.15, strawberry: 0.15, cucumber: 0.15, carrot: 0.23, corn: 0.23, pumpkin: 0.09 },
 	migaPumpkin: { tomato: 0.31, strawberry: 0.31, cucumber: 0.1, carrot: 0, corn: 0.1, pumpkin: 0.08 },
 	cornStrob: { tomato: 0.35, strawberry: 0.14, cucumber: 0.35, carrot: 0.1, corn: 0.03, pumpkin: 0.03 }
 };
 var levelData = [
 	{ mission: "Harvest 15 crops.", req: { any: 15 }, time: 5940, dist: "standard" },
-
+	// 1
 	{ mission: "Harvest 30 crops in under a minute.", req: { any: 30 }, time: 60, dist: "standardEasy" },
 	{ mission: "Harvest 20 tomatoes in under a minute.", req: { tomato: 20 }, time: 60, dist: "easyBonusTomatoes" },
 	{ mission: "Harvest 100 crops in under five minutes.", req: { any: 100 }, time: 300, dist: "standardEasy" },
 	{ mission: "Harvest 10 corn in under two minutes.", req: { corn: 10 }, time: 120, dist: "bonusCorn" },
 	{ mission: "Harvest two pumpkins in under three minutes.", req: { pumpkin: 2 }, time: 180, dist: "standard" },
-
+	// 6
 	{ mission: "Get 1500 points in under a minute.", req: { score: 1500 }, time: 60, dist: "standard" },
 	{ mission: "Harvest 10 tomatos, cucumbers, and strawberries in under two minutes.", req: { tomato: 10, cucumber: 10, strawberry: 10 }, time: 120, dist: "standardEasy" },
 	{ mission: "Harvest 10 carrots and 10 corn in under three minutes.", req: { carrot: 10, corn: 10 }, time: 180, dist: "standard" },
 	{ mission: "Get 2000 points and 5 corn in under two minutes.", req: { score: 2000, corn: 5 }, time: 120, dist: "standard" },
 	{ mission: "Get 1000 points without harvesting a single cucumber!", req: { score: 1000 }, restrictions: ["cucumber"], time: 600, dist: "lessCucumbers" },
-
+	// 11
 	{ mission: "Harvest three pumpkins in under five minutes.", req: { pumpkin: 3 }, time: 300, dist: "pumpkinBenefit" },
-	{ mission: "Get 3000 points in under a minute.", req: { score: 3000 }, time: 60, dist: "standard" },
+	{ mission: "Get 1000 points in under three minutes... but only crops harvested in chains will give points!", req: { score: 1000 }, minChain: 2, time: 180, dist: "standardEasy" },
 	{ mission: "Harvest thirty tomatos and no carrots.", req: { tomato: 30 }, restrictions: ["carrot"], time: 600, dist: "standardEasy" },
 	{ mission: "Get 1000 points in under 2 minutes without harvesting a single tomato!", req: { score: 1000 }, restrictions: ["tomato"], time: 120, dist: "standardEasy" },
-	{ mission: "Don't harvest any tomatos, cucumbers, or strawberries! Also get 1000 point I guess.", req: { score: 1000 }, restrictions: ["tomato", "cucumber", "strawberry"], time: 600, dist: "bortLessPump" },
-
+	{ mission: "Get 1000 points in under three minutes... but only crops harvested in 3-chains or higher will give points! ", req: { score: 1000 }, minChain: 3, time: 180, dist: "standard" },
+	// 16
 	{ mission: "Get 1000 points in under 3 minutes... but only harvests of three crops or more will give you points!", req: { score: 1000 }, minHarvest: 3, time: 180, dist: "standard" },
 	{ mission: "Harvest 500 crops in under 6 minutes.", req: { any: 500 }, time: 360, dist: "standard" },
 	{ mission: "Get 1500 points in under 2 minutes... but only harvests of four crops or more will give you points!", req: { score: 1500 }, minHarvest: 4, time: 120, dist: "standard" },
 	{ mission: "Get 2000 points in under 3 minutes without harvesting any pumpkins.", req: { score: 2000 }, restrictions: ["pumpkin"], time: 180, dist: "migaPumpkin" },
 	{ mission: "Get 2000 points, harvesting no corn or strawberries. Only harvests of three crops or more will give you points!", req: { score: 2000 }, restrictions: ["corn", "strawberry"], minHarvest: 3, time: 600, dist: "cornStrob" },
-
+	// 21
 	{ mission: "Harvest the required number of each crop in under 5 minutes.", req: { tomato: 120, strawberry: 120, cucumber: 120, carrot: 20, corn: 20, pumpkin: 4 }, time: 300, dist: "standard" },
 	{ mission: "Get 10000 points in under 2 minutes.", req: { score: 10000 }, time: 120, dist: "standard" },
 	{ mission: "Get 4200 points in under 3 minutes without harvesting cucumbers, carrots, or pumpkins.", req: { score: 4200 }, restrictions: ["cucumber", "carrot", "pumpkin"], time: 180, dist: "twentythree" },
