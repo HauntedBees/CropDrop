@@ -519,6 +519,7 @@ var wateringGame = {
 				case "cucumber":
 				case "strawberry":
 				case "corn":
+					if(pairLen > 5) { wateringGame.addWhacker(); }
 					if(pairLen > 4) { wateringGame.addWhacker(); }
 					break;
 				case "carrot":
@@ -543,7 +544,7 @@ var wateringGame = {
 				summationScore += finalScore;
 				wateringGame.shipScore(finalScore);
 				if(wateringGame.mode == 2 && !wateringGame.inStoryMode) {
-					var dt = Math.min(180, Math.floor(finalScore / 250));
+					var dt = Math.min(180, Math.floor(finalScore / 300));
 					summationTime += dt;
 					wateringGame.timer += dt;
 					wateringGame.updateTimeDisplay();
