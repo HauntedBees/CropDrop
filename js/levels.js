@@ -49,7 +49,7 @@ function SetUpLevelSelect() {
 	$("#whackerPos").on("click", function() {
 		settings.whackerRight = !settings.whackerRight;
 		$("#whackerPos").text(settings.whackerRight ? "Right-Handed" : "Left-Handed");
-		if(settings.whackerRight) {
+		if(!settings.whackerRight) {
 			$("#weedWhackBtn").before($("#innerCropInfo"));
 		} else {
 			$("#innerCropInfo").before($("#weedWhackBtn"));

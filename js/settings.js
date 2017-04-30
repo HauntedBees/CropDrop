@@ -95,7 +95,7 @@ function LoadGame() {
 	} else if(settings.accGrafs == 2) {
 		$("#game").addClass("cb");
 	}
-	if(!settings.whackerRight) { $("#innerCropInfo").before($("#weedWhackBtn")); }
+	if(settings.whackerRight) { $("#innerCropInfo").before($("#weedWhackBtn")); }
 	var l = window.localStorage.getItem("levelsCompleted" + SAVEDATAVERSION);
 	if(l != null) { levelsCompleted = JSON.parse(l); }
 }
