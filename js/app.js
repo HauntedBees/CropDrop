@@ -79,7 +79,8 @@ limitations under the License.*/
 		res += "</div>";
 	}
 	$("#cropGame").html(res);
-	
+	$(".cropRow:nth-last-child(2)").addClass("whackerRow");
+
 	SetUpLevelSelect();
 	setInterval(function() { $(".anim").toggleClass("f2"); }, 250);
 	

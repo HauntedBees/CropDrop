@@ -651,7 +651,8 @@ var wateringGame = {
 		$("#weedWhackBtn > span").text("x" + wateringGame.whackers);
 		sounds.playSound("mow");
 		wateringGame.locked = true;
-		$(".cropRow:nth-last-child(2)").append("<div class='weedWhack'></div>");
+		$(".weedWhack").remove();
+		$(".whackerRow").append("<div class='weedWhack'></div>");
 		setTimeout(function() {
 			for(var x = wateringGame.width - 1; x >= 0; x -= 2) {
 				var y = wateringGame.height - 1;//(x % 2 == 0 ? 1 : 2);
