@@ -124,7 +124,7 @@ var wateringGame = {
 		}
 
 		wateringGame.whackQueued = false;
-		$("#weedWhackBtn").text("x" + wateringGame.whackers);
+		$("#weedWhackBtn > span").text("x" + wateringGame.whackers);
 		$(document).off("click", "#weedWhackBtn");
 		$(document).on("click", "#weedWhackBtn", function() {
 			if(wateringGame.whackQueued || wateringGame.whackers == 0) { return; }
@@ -644,13 +644,13 @@ var wateringGame = {
 	},
 	weedWhack: function() {
 		wateringGame.whackers--;
-		$("#weedWhackBtn").text("x" + wateringGame.whackers);
+		$("#weedWhackBtn > span").text("x" + wateringGame.whackers);
 		sounds.playSound("mow");
 		wateringGame.locked = true;
 		$(".cropRow:nth-last-child(2)").append("<div class='weedWhack'></div>");
 		setTimeout(function() {
-			for(var x = wateringGame.width - 1; x >= 0; x--) {
-				var y = wateringGame.height - (x % 2 == 0 ? 1 : 2);
+			for(var x = wateringGame.width - 1; x >= 0; x -= 2) {
+				var y = wateringGame.height - 1;//(x % 2 == 0 ? 1 : 2);
 				wateringGame.shred(x, y);
 			}
 			wateringGame.attemptFinishTurn();

@@ -11,13 +11,14 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.*/
-var SAVEDATAVERSION = "0.35";
+var SAVEDATAVERSION = "0.4";
 var settings = {
 	device: "browser",
 	playSounds: true,
 	playMusic: true,
 	wasUsingFB: false,
 	HDgrafs: false,
+	whackerRight: true, 
 	accGrafs: 0
 };
 var levelsCompleted = {};
@@ -94,6 +95,7 @@ function LoadGame() {
 	} else if(settings.accGrafs == 2) {
 		$("#game").addClass("cb");
 	}
+	if(!settings.whackerRight) { $("#innerCropInfo").before($("#weedWhackBtn")); }
 	var l = window.localStorage.getItem("levelsCompleted" + SAVEDATAVERSION);
 	if(l != null) { levelsCompleted = JSON.parse(l); }
 }

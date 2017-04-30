@@ -24,6 +24,7 @@ var menuNav = {
 	},
 	showSettings: function() {
 		sounds.playSound("tap");
+		$("#whackerPos").text(settings.whackerRight ? "Right-Handed" : "Left-Handed");
 		$("#sounds").text(settings.playSounds ? "Sound On" : "Sound Off");
 		$("#musics").text(settings.playMusic ? "Music On" : "Music Off");
 		$("#grafs").text(settings.HDgrafs ? "HD Graphics On" : "HD Graphics Off");

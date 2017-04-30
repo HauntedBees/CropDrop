@@ -78,6 +78,7 @@ limitations under the License.
 					<button id="fbConnect">Connect to Facebook</button>
 					<button id="sounds">Sound Effects On</button>
 					<button id="musics">Music On</button>
+					<button id="whackerPos">Right-Handed</button>
 					<button id="grafs">HD Graphics Off</button>
 					<button id="acc">Colored Outlines Off</button>
 					<button id="gplay">Gameplay Off</button>
@@ -148,19 +149,21 @@ limitations under the License.
 				</div>
 				<div id="cropGame" class="scene"></div>
 				<div class="cropInfo">
-					<div>
-						<div class="infoBar carrot main"><span id="info_carrot">0</span></div>
-						<div class="infoBar strawberry main"><span id="info_strawberry">0</span></div>
-						<div class="infoBar cucumber main"><span id="info_cucumber">0</span></div>
+					<div id="innerCropInfo">
+						<div>
+							<div class="infoBar carrot main"><span id="info_carrot">0</span></div>
+							<div class="infoBar strawberry main"><span id="info_strawberry">0</span></div>
+							<div class="infoBar cucumber main"><span id="info_cucumber">0</span></div>
+						</div>
+						<div>
+							<div class="infoBar tomato main"><span id="info_tomato">0</span></div>
+							<div class="infoBar corn main"><span id="info_corn">0</span></div>
+							<div class="infoBar pumpkin main"><span id="info_pumpkin">0</span></div>
+						</div>
 					</div>
-					<div>
-						<div class="infoBar tomato main"><span id="info_tomato">0</span></div>
-						<div class="infoBar corn main"><span id="info_corn">0</span></div>
-						<div class="infoBar pumpkin main"><span id="info_pumpkin">0</span></div>
-					</div>
+					<button id="weedWhackBtn"><div class="sprite small s_mower"></div><span>x0</span></button>
 				</div>
 				<button id="pause">Pause</button>
-				<button id="weedWhackBtn">x4</button>
 			</div>
 			<div id="aboutMenu" style="display:none">
 				<div id="aboutContainer">
@@ -198,6 +201,8 @@ limitations under the License.
 							<li>"<a href="https://www.flickr.com/photos/9993075@N06/2554064933">Giant Pumpkin Seedlings</a>" by <a href="https://www.flickr.com/photos/aresauburnphotos/">Nick Ares</a>, available under the <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA 2.0</a> license. Copyright &copy; 2008 Nick Ares.</li>
 							<li>"<a href="https://www.flickr.com/photos/kams_world/4047724512">Pumpkin Patch 100_9296</a>" by <a href="https://www.flickr.com/photos/kams_world/">Kam Abbott</a>, available under the <a href="https://creativecommons.org/licenses/by/2.0/">CC-BY 2.0</a> license. Copyright &copy; 2009 Kam Abbott.</li>
 							<li>"<a href="https://commons.wikimedia.org/wiki/File:Wooden_hourglass_3.jpg">Wooden hourglass 3</a>" by <a href="https://commons.wikimedia.org/wiki/User:S_Sepp">S Sepp</a>, available under the <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA 3.0</a> license. Copyright &copy; 2007 S Sepp.</li>
+						
+							<li>"<a href="https://commons.wikimedia.org/wiki/File:15.Electric_Brushcutter.jpg">15.Electric Brushcutter</a>" by <a href="https://commons.wikimedia.org/w/index.php?title=User:Harisingh%26sons">Harisingh&amp;sons</a>, available under the <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0</a> license. Copyright &copy; 2008 Harisingh&amp;sons.</li>
 						</ul>
 						<p>License Info</p>
 						<div id="license" class="scrollable">

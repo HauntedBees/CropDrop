@@ -46,6 +46,16 @@ function SetUpLevelSelect() {
 		$("#sounds").text(settings.playSounds ? "Sound On" : "Sound Off");
 		sounds.playSound("tap");
 	});
+	$("#whackerPos").on("click", function() {
+		settings.whackerRight = !settings.whackerRight;
+		$("#whackerPos").text(settings.whackerRight ? "Right-Handed" : "Left-Handed");
+		if(settings.whackerRight) {
+			$("#weedWhackBtn").before($("#innerCropInfo"));
+		} else {
+			$("#innerCropInfo").before($("#weedWhackBtn"));
+		}
+		sounds.playSound("tap");
+	});
 	$("#musics").on("click", function() {
 		settings.playMusic = !settings.playMusic;
 		if(!settings.playMusic) {

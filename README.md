@@ -24,6 +24,7 @@ Crop Drop's source code is licensed with the [Apache 2.0 License](http://www.apa
 *   "[Giant Pumpkin Seedlings](https://www.flickr.com/photos/9993075@N06/2554064933)" by [Nick Ares](https://www.flickr.com/photos/aresauburnphotos/), available under the [CC-BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0/) license. Copyright © 2008 Nick Ares.
 *   "[Pumpkin Patch 100_9296](https://www.flickr.com/photos/kams_world/4047724512)" by [Kam Abbott](https://www.flickr.com/photos/kams_world/), available under the [CC-BY 2.0](https://creativecommons.org/licenses/by/2.0/) license. Copyright © 2009 Kam Abbott.
 *   "[Wooden hourglass 3](https://commons.wikimedia.org/wiki/File:Wooden_hourglass_3.jpg)" by [S Sepp](https://commons.wikimedia.org/wiki/User:S_Sepp), available under the [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) license. Copyright © 2007 S Sepp.
+*   "[15.Electric Brushcutter](https://commons.wikimedia.org/wiki/File:15.Electric_Brushcutter.jpg)" by [Harisingh&sons](https://commons.wikimedia.org/w/index.php?title=User:Harisingh%26sons), available under the [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license. Copyright © 2008 Harisingh&sons.
 *   All other audio files and HD graphics images are in the Public Domain.
 
 ## dependencies

@@ -233,6 +233,7 @@ table .val { text-align: right; width: 15% }
 	height: 192px;
 	width: 192px;
 }
+.sprite.small { height: 96px; width: 96px }
 .crop.paused { background: none }
 .weedWhack {
 	animation: whack;
@@ -246,18 +247,26 @@ table .val { text-align: right; width: 15% }
 	position: absolute;
     right: 0;
 }
+.HD .weedWhack { background: url("images/weedwhacker_hd.png") }
 @keyframes whack { 
 	0% { right: -10%; margin-top: 0 }
-	10% { right: 0%; margin-top: -196px }
+	10% { right: 0%; margin-top: -98px } /* -196px */
 	20% { right: 10%; margin-top: 0 }
-	30% { right: 20%; margin-top: -196px }
+	30% { right: 20%; margin-top: -98px }
 	40% { right: 30%; margin-top: 0 }
-	50% { right: 40%; margin-top: -196px }
+	50% { right: 40%; margin-top: -98px }
 	60% { right: 50%; margin-top: 0 }
-	70% { right: 60%; margin-top: -196px }
+	70% { right: 60%; margin-top: -98px }
 	80% { right: 70%; margin-top: 0 }
-	90% { right: 80%; margin-top: -196px }
+	90% { right: 80%; margin-top: -98px }
 	100% { right: 90%; margin-top: 0 }
+}
+#innerCropInfo { display: inline-block }
+#weedWhackBtn { display: inline-block; vertical-align: top }
+#weedWhackBtn > div { float: left }
+#weedWhackBtn > span {
+	display: block;
+	float: right;
 }
 
 .crop_particle { position: absolute; z-index: 100 }
@@ -292,6 +301,8 @@ table .val { text-align: right; width: 15% }
 .c_strawberry_1 { background-position: -1344px -192px }
 .c_strawberry_2 { background-position: -1536px -192px }
 .c_strawberry { background-position: -1728px -192px }
+
+.s_mower { background-position: -1920px -192px }
 
 .HD .sprite { background-image: url("images/sheet_HD.png") !important }
 .HD .infoBar { background-image: url("images/info_HD.png") !important }
