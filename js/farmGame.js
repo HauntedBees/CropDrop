@@ -159,7 +159,7 @@ var wateringGame = {
 		wateringGame.settleBoard(true);
 		wateringGame.drawBoard();
 	},
-	addWhacker: function() { $("#weedWhackBtn").text("x" + (++wateringGame.whackers)); },
+	addWhacker: function() { $("#weedWhackBtn > span").text("x" + (++wateringGame.whackers)); },
 	count: function() {
 		var count = 0;
 		for(var x = 0; x < wateringGame.width; x++) {
