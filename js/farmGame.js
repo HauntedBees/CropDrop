@@ -32,7 +32,7 @@ var wateringGame = {
 		$(".forbidden").removeClass("forbidden");
 		$(".overlayTap").hide();
 		$(".infoBar.main > span").text("0");
-		$(".comboParticle").remove();
+		$(".comboParticle,.poof,.bee,.scoreParticle,.timeParticle").remove();
 		wateringGame.mode = mode || 2;
 		wateringGame.restrictions = [];
 		wateringGame.shipmentDifficulty = 1;
@@ -67,7 +67,7 @@ var wateringGame = {
 			$("#overlayText").text((levelNumber == 0 ? "Tutorial: " : "Mission: ") + ld.mission);
 			wateringGame.createShipmentFromLevelData(ld);
 		} else {
-			wateringGame.whackers = 0;
+			wateringGame.whackers = (mode == 2 ? 0 : 10);
 			wateringGame.levelNum = undefined;
 			wateringGame.initDistribution("standard");
 			if(mode == 2) {
@@ -76,8 +76,9 @@ var wateringGame = {
 				$("#overlayText").html("Rising Mode<br><span>Every time you mature a crop, it will scatter seeds, planting saplings in the spaces next to it. Additionally, crops will slowly rise up from the bottom over time! Keep harvesting to prevent a garden overflow!</span><br><br>");
 			}
 		}
-		$("#mainGame,#menuBtn,.gameOverTap").hide();
-		$("#cropGame,#pauseBtn").show();
+		$("#mainGame,#menuBtn,.gameOverTap,#gardenCropInfo,#leave").hide();
+		$("#cropGame,.infoBar,#mainCropInfo,#pause").show();
+		$("#shipText").text("Needed");
 		wateringGame.board = [];
 		wateringGame.width = width;
 		wateringGame.height = height;
@@ -91,6 +92,7 @@ var wateringGame = {
 		wateringGame.score = 0;
 		$("#cropScore").text("0");
 		wateringGame.lastedTime = 0;
+		wateringGame.timeSinceLastBee = 0;
 		if(wateringGame.mode == 1) {
 			wateringGame.timer = 0;
 			wateringGame.modeTimerIdx = setInterval(wateringGame.handleMode1, 1000);
@@ -347,9 +349,13 @@ var wateringGame = {
 		if(wateringGame.paused) { return; }
 		wateringGame.timer += (wateringGame.mode == 1) ? 1 : -1;
 		wateringGame.lastedTime += 1;
+		wateringGame.timeSinceLastBee += 1;
 		wateringGame.updateTimeDisplay();
 		if(wateringGame.lastedTime % 7 == 0 && Object.keys(wateringGame.shipment).length === 0 && wateringGame.mode == 2) {
 			wateringGame.createNewShipment();
+		}
+		if(wateringGame.timeSinceLastBee >= 10 && Math.random() > 0.95) {
+			wateringGame.spawnBee();
 		}
 		if(wateringGame.timer == 0) {
 			wateringGame.gameOver("Time's Up!");
@@ -359,6 +365,24 @@ var wateringGame = {
 		var minutes = Math.floor(wateringGame.timer / 60);
 		var seconds = wateringGame.timer - (minutes * 60);
 		$("#cropTimer").text(minutes + ":" + (seconds < 10 ? "0" : "") + seconds);
+	},
+	spawnBee: function() {
+		wateringGame.timeSinceLastBee = -5 * Math.random();
+		var $crops = $(".cropRow > .sprite");
+		var $chosen = $crops.eq(Math.floor(Math.random() * $crops.length));
+		if($(".bee", $chosen).length) {
+			wateringGame.timeSinceLastBee += 10;
+			return;
+		}
+		$chosen.append("<div class='sprite small poof p1'></div>");
+		setTimeout(function() {
+			$(".poof.p1").removeClass("p1").addClass("p2");
+			setTimeout(function() {
+				$(".poof.p2").removeClass("p2").addClass("p3");
+				$(".poof").parent().append("<div class='sprite small bee anim'></div>");
+				setTimeout(function() { $(".poof.p3").remove(); }, 100);
+			}, 100);
+		}, 100);
 	},
 	handleMode1: function() {
 		if(wateringGame.paused) { return; }
@@ -475,7 +499,7 @@ var wateringGame = {
 		var summationScore = 0, summationTime = 0;
 		for(var i = 0; i < pairPairs.length; i++) {
 			var pair = pairPairs[i];
-			var score = 0, multiplier = 1;
+			var score = 0, multiplier = 1, beeMultiplier = 1;
 			var centerx = 0;
 			for(var j = 0; j < pair.length; j++) { centerx += Math.floor(pair[j] / 10); }
 			var pairLen = pair.length;
@@ -490,6 +514,11 @@ var wateringGame = {
 					tileType = tile.type;
 					var $info = $("#info_" + tile.type);
 					var count = parseInt($info.text()) + 1;
+					if($("#crop" + x + "_" + y + " .bee").length) {
+						beeMultiplier += 0.1;
+						settings.pollen += Math.ceil(Math.random() * 5);
+						SaveGame();
+					}
 					$info.text(count);
 					wateringGame.shipCrop(tile.type);
 					if(pairLen >= wateringGame.minHarvestRequirement) {
@@ -535,7 +564,7 @@ var wateringGame = {
 					}
 					break;
 			}
-			var finalScore = Math.floor(wateringGame.totalMultiplier * score);
+			var finalScore = Math.floor(wateringGame.totalMultiplier * score * beeMultiplier);
 			if(wateringGame.soundPlayedHere != wateringGame.totalMultiplier) {
 				var soundIdx = wateringGame.totalMultiplier == 1 ? 1 : (1 + parseInt((wateringGame.totalMultiplier - 1) / 0.25));
 				if(soundIdx > 5) { soundIdx = 5; }
@@ -617,9 +646,7 @@ var wateringGame = {
 				tile.stage = toMax ? tile.finalStage : Math.min(tile.finalStage, tile.stage + 1);
 			}
 		}
-		$crop.empty();
-		wateringGame.board[y][x] = tile;
-		wateringGame.addCrop($crop, tile);
+		wateringGame.replaceCrop($crop, tile, x, y);
 		return shouldSpread;
 	},
 	addCrop: function($crop, tile) {
@@ -640,12 +667,19 @@ var wateringGame = {
 	drawBoard: function() {
 		for(var x = 0; x < wateringGame.width; x++) {
 			for(var y = 0; y < wateringGame.height; y++) {
-				var $crop = $("#crop" + x + "_" + y);
-				$crop.empty();
-				var tile = wateringGame.board[y][x];
-				if(tile != 0) { wateringGame.addCrop($crop, tile); }
+				wateringGame.replaceCrop($("#crop" + x + "_" + y), wateringGame.board[y][x], x, y);
 			}
 		}
+	},
+	replaceCrop: function($crop, tile, x, y) {
+		wateringGame.board[y][x] = tile;
+		if(tile == 0) {
+			$crop.empty();
+			return;
+		}
+		var name = tile.type + "_" + tile.stage;
+		$(".crop", $crop).remove();
+		$crop.prepend("<div data-type='" + tile.type + "' data-stage='" + tile.stage + "' class='crop sprite c_" + name + "'></div>");
 	},
 	weedWhack: function() {
 		wateringGame.whackers--;
@@ -667,9 +701,7 @@ var wateringGame = {
 	shred: function(x, y) {
 		var $crop = $("#crop" + x + "_" + y);
 		if(!$crop.length) { return; }
-		var tile = 0;
-		$crop.empty();
-		wateringGame.board[y][x] = tile;
+		wateringGame.replaceCrop($crop, 0, x, y);
 	},
 	initDistribution: function(dist) {
 		if(typeof(dist) === "string") { dist = commonDistributions[dist]; }

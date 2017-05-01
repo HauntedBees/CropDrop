@@ -11,7 +11,7 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.*/
-var SAVEDATAVERSION = "0.4";
+var SAVEDATAVERSION = "0.BEE";
 var settings = {
 	device: "browser",
 	playSounds: true,
@@ -19,7 +19,11 @@ var settings = {
 	wasUsingFB: false,
 	HDgrafs: false,
 	whackerRight: true, 
-	accGrafs: 0
+	accGrafs: 0,
+	lastGardenVisit: new Date(),
+	garden: [[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]],
+	cropsGrown: 0, 
+	pollen: 0
 };
 var levelsCompleted = {};
 var sounds = {

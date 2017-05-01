@@ -234,7 +234,32 @@ table .val { text-align: right; width: 15% }
 	width: 192px;
 }
 .sprite.small { height: 96px; width: 96px }
-.crop.paused { background: none }
+
+.bee {
+	background-position: -2304px -192px;
+	margin-left: -100px;
+	margin-top: -4px;
+	pointer-events: none;
+	position: absolute;
+}
+.bee.f2 { background-position: -2400px -192px }
+.poof {
+	background-position: -2016px -192px;
+	margin-left: -100px;
+	margin-top: -4px;
+	position: absolute;
+}
+.poof.p2 { background-position: -2112px -192px }
+.poof.p3 { background-position: -2208px -192px }
+.message { text-align:left; display:inline-block }
+br.gap { line-height: 1.5 }
+.msgsource {
+    bottom: 250px;
+    position: absolute;
+    right: 20px;
+}
+
+.crop.paused, .bee.paused, .poof.paused { background: none }
 .weedWhack {
 	animation: whack;
 	animation-duration: 1s;
@@ -364,11 +389,12 @@ table .val { text-align: right; width: 15% }
 	border-bottom: 5px solid black;
 }
 #shipItems { height: 208px }
+.gardenInfo { font-size: 44px }
 
 #mainMenu { text-align: center }
 #logo { margin: 0 auto; left: 0; right: 0; margin-top: 360px; }
 
-.levelIcon, .choiceIcon, .settingsGear, .aboutButton {
+.levelIcon, .choiceIcon, .settingsGear, .aboutButton, .gardenButton {
 	background-image: url("images/tiles.png");
 	display: inline-block;
 	font-size: 72px;
@@ -379,9 +405,15 @@ table .val { text-align: right; width: 15% }
 .levelIcon > div { padding-top: 100px }
 .android .levelIcon > div { padding-top: 120px }
 .aboutButton { background-image: url("images/about.png") }
-.aboutButton:hover, .aboutButton:active { background-position: -300px 0 }
 .settingsGear { background-image: url("images/gear.png") }
-.settingsGear:hover, .settingsGear:active { background-position: -300px 0 }
+.gardenButton { background-image: url("images/flower.png") }
+.settingsGear:hover, .settingsGear:active, .aboutButton:hover, .aboutButton:active, .gardenButton:hover, .gardenButton:active { background-position: -300px 0 }
+#pollenCount {
+    font-size: 72px;
+    min-width: 66%;
+    display: inline-block;
+    margin-top: 20px;
+}
 
 .sg2 { display: inline-block !important; margin: 0 auto; left: 0; right: 0 }
 .sg3 { float: right; padding: 0 !important }

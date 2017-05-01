@@ -48,6 +48,7 @@ limitations under the License.
 				<button id="risingMode" class="fancyButton mode"><span>Rising</span><span>Mode</span></button>
 				<div>
 					<div id="about" class="aboutButton sg2"></div>
+					<div class="gardenButton sg2"></div>
 					<div class="settingsGear sg2"></div>
 				</div>
 				<div id="bottom">
@@ -136,6 +137,9 @@ limitations under the License.
 					<div id="overlayButtonsE" class="overlayButtons">
 						<button class="unpause fancyButton smalButton">Begin</button>
 					</div>
+					<div id="overlayButtonsF" class="overlayButtons">
+						<button class="unpause fancyButton smalButton">Thanks</button>
+					</div>
 					<div id="overlayButtonsNav" class="overlayAltText">
 						<button id="navLeft" class="nav">&lt;</button>
 						<button id="navRight" class="nav">&gt;</button>
@@ -148,7 +152,7 @@ limitations under the License.
 					</div>
 				</div>
 				<div id="cropGame" class="scene"></div>
-				<div class="cropInfo">
+				<div id="mainCropInfo" class="cropInfo">
 					<div id="innerCropInfo">
 						<div>
 							<div class="infoBar carrot main"><span id="info_carrot">0</span></div>
@@ -163,7 +167,11 @@ limitations under the License.
 					</div>
 					<button id="weedWhackBtn"><div class="sprite small s_mower"></div><span>x0</span></button>
 				</div>
+				<div id="gardenCropInfo" class="cropInfo">
+					<div id="pollenCount" class="fancyButton">Pollen Count: 69</div>
+				</div>
 				<button id="pause">Pause</button>
+				<button id="leave" class="quitToMenu">Leave</button>
 			</div>
 			<div id="aboutMenu" style="display:none">
 				<div id="aboutContainer">
@@ -413,6 +421,7 @@ Version 2.0, January 2004<br>
 		<script src="js/levels.js"></script>
 		<script src="js/tutorial.js"></script>
 		<script src="js/farmGame.js"></script>
+		<script src="js/bees.js"></script>
 		<script src="js/menuNav.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/fb.js"></script>

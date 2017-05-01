@@ -86,6 +86,7 @@ limitations under the License.*/
 	
 	$("#quit").on("click", menuNav.exitApp);
 	$("#about").on("click", menuNav.showAbout);
+	$(".gardenButton").on("click", beeGarden.start);
 	$(".settingsGear").on("click", menuNav.showSettings);
 	$(".quitToMenu").on("click", menuNav.quitToMenuInGame);
 	$(".toMainMenu").on("click", menuNav.returnToMainMenu);
