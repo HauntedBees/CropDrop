@@ -1,3 +1,4 @@
+/******************************* 0. UNIVERSAL *******************************/
 @font-face { font-family: Nevis; src: url("fonts/nevis.ttf"); }
 .browser button, .browser .fullCoverText, .browser .exitSettings, .browser .fullCover, .browser .levelIcon, 
 .browser .choiceIcon, .browser .extraOption, .browser .crop, .browser #errorBg, .browser .exitError { cursor: pointer }
@@ -13,40 +14,6 @@
 	user-select: none;
 }
 
-a { color: #502300; text-decoration: none }
-a:active { color: #996600 }
-a:visited { color: #502300 }
-.bottom {
-	bottom: 0;
-	right: 25px;
-	width: 100%;
-	text-align: right;
-	font-size: 68px !important;
-	position: absolute;
-}
-.bottom img { margin-bottom: -18px }
-
-#debugInfo {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	border: 1px solid black;
-	background-color: #FFFFFF;
-}
-
-.loading {
-	animation: loader 2s linear infinite;
-	background-image: url("images/loading.png");
-	height: 160px;
-	margin: 0 auto;
-    margin-top: 480px;
-	width: 160px;
-}
-@keyframes loader { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
-#loadingScreen { margin-top: 50% }
-#l2 { font-size: 128px; margin-top: 40px; text-align: center }
-
 html, body, #content, #levelSelect  {
 	height: 100%;
 	overflow-y: hidden;
@@ -60,22 +27,297 @@ body {
 	overflow-x: hidden;
 	position: relative;
 }
-#levelDisplay {
-	bottom: 0px;
-	overflow-x: auto;
+
+/******************************** 1. SPRITES ********************************/
+/********************************* A. SETUP *********************************/
+.sprite { background: url("images/sheet.png"); display: inline-block; height: 192px; width: 192px }
+.sprite.small { height: 96px; width: 96px }
+
+.infoBar {
+	background-image: url("images/sheet.png");
+	display: inline-block;
+	font-size: 48px;
+	height: 96px;
+	margin: 2px 0;
+	text-align: right;
+	width: 280px;
+}
+.infoBar > span {
+    display: table-cell;
+    height: 100px;
+    padding-right: 40px;
+    vertical-align: middle;
+    width: 280px;
+}
+.infoBar.score > span { width: 404px }
+
+.extraOption { margin: 20px }
+/*********************** B. HD/ACCESSIBILITY GRAPHICS ***********************/
+.HD .sprite, .HD .infobar { background-image: url("images/sheet_HD.png") !important }
+.acc .sprite { background-image: url("images/sheet_acc.png") !important }
+.acc.HD .sprite { background-image: url("images/sheet_HD_acc.png") !important }
+.cb .sprite, .cb .infoBar { background-image: url("images/sheet_cb.png") !important }
+.cb.HD .sprite, .cb.HD .infoBar { background-image: url("images/sheet_HD_cb.png") !important }
+
+/************************** C. THE ACTUAL SPRITES ***************************/
+.c_carrot_0 { background-position: -192px 0 }
+.c_carrot_1 { background-position: -384px 0 }
+.c_carrot { background-position: -576px 0 }
+
+.c_corn_0 { background-position: -768px 0 }
+.c_corn_1 { background-position: -960px 0 }
+.c_corn_2 { background-position: -1152px 0 }
+.c_corn_3 { background-position: -1344px 0 }
+.c_corn { background-position: -1536px 0 }
+
+.c_cucumber_0 { background-position: -1728px 0 }
+.c_cucumber_1 { background-position: -1920px 0 }
+.c_cucumber_2 { background-position: -2112px 0 }
+.c_cucumber { background-position: -2304px 0 }
+
+.c_tomato_0 { background-position: -2496px -96px; height: 96px; margin-top: 96px }
+.c_tomato_1 { background-position: -2688px 0 }
+.c_tomato_2 { background-position: -2304px -384px }
+.c_tomato { background-position: 0 -192px }
+
+.c_pumpkin_0 { background-position: -192px -192px }
+.c_pumpkin_1 { background-position: -384px -192px }
+.c_pumpkin_2 { background-position: -576px -192px }
+.c_pumpkin_3 { background-position: -768px -192px }
+.c_pumpkin { background-position: -960px -192px }
+
+.c_strawberry_0 { background-position: -1152px -192px }
+.c_strawberry_1 { background-position: -1344px -192px }
+.c_strawberry_2 { background-position: -1536px -192px }
+.c_strawberry { background-position: -1728px -192px }
+
+.s_mower { background-position: -1920px -192px }
+
+.infoBar.forbidden:before {
+    background-image: url("images/sheet.png");
+	background-position: -1929px -297px;
+    content: " ";
+    float: left;
+    height: 80px;
+    margin-left: 15px;
+    margin-top: 10px;
+    width: 88px;
+}
+
+.poof {
+	background-position: -2016px -192px;
+	margin-left: -100px;
+	margin-top: -4px;
+	position: absolute;
+}
+.poof.p2 { background-position: -2112px -192px }
+.poof.p3 { background-position: -2208px -192px }
+
+.bee {
+	background-position: -2304px -192px;
+	margin-left: -100px;
+	margin-top: -4px;
+	pointer-events: none;
+	position: absolute;
+}
+.bee.f2 { background-position: -2400px -192px }
+
+.settingsGear { background-position: 0 -384px }
+.settingsGear:hover, .settingsGear:active { background-position: -192px -384px }
+.aboutButton { background-position: -384px -384px }
+.aboutButton:hover, .aboutButton:active { background-position: -576px -384px }
+.gardenButton { background-position: -768px -384px }
+.gardenButton:hover, .gardenButton:active { background-position: -960px -384px }
+
+.infoBar.score { background-position: -2056px -288px; width: 404px }
+.infoBar.cucumber { background-position: -1152px -384px }
+.infoBar.tomato { background-position: -1440px -384px }
+.infoBar.strawberry { background-position: -1728px -384px }
+.infoBar.time { background-position: -2016px -384px }
+.infoBar.corn { background-position: -1152px -480px }
+.infoBar.carrot { background-position: -1440px -480px }
+.infoBar.pumpkin { background-position: -1728px -480px }
+.infoBar.any {  background-position: -2016px -480px }
+.infoBar.OK { background-position: -2520px 0; width: 145px }
+
+/*************************** 2. BUTTONS AND LINKS ***************************/
+a { color: #502300; text-decoration: none }
+a:active { color: #996600 }
+a:visited { color: #502300 }
+
+button {
+	background: #FFAC2F;
+	border: 5px solid #704300;
+	border-radius: 8px;
+	display: block;
+	font-family: Nevis !important;
+	font-size: 72px;
+	margin: 20px auto;
+	padding: 24px 48px;
+	text-align: center;
+	white-space: nowrap;
+}
+button:hover { background: #FFA51E; border-color: #996600; color: #996600 }
+button:active { background: #CA7900; border-color: #000000; color: #000000 }
+button.nav {
+    background-color: #EEEEEE;
+    border: 10px solid #CCCCCC;
+    border-radius: 75px;
+    color: #999999;
+    height: 150px;
+    opacity: 0.9;
+    position: absolute;
+    top: 40%;
+    width: 150px;
+}
+button.nav:hover, button.nav:active { background: #EEEEEE; border-color: #CCCCCC; color: #999999; opacity: 1.0 }
+
+.fancyButton {
+	background: #E88B00;
+	border: 30px solid transparent;
+	border-image: url("images/border.png") 27;
+	padding: 6px 24px;
+}
+.fancyButton.mode { display: inline-block; margin: 0 20px; width: 450px; }
+.fancyButton.mode > span { display: block }
+.fancyButton.mode > span:first-child { font-size: 96px }
+.fancyButton.mode > span:last-child { font-size: 56px }
+
+.bigButton { font-size: 148px; height: 500px; width: 60% }
+.medButton { font-size: 120px; height: 300px; width: 40% }
+.smalButton { font-size: 96px; height: 200px; width: 30% }
+.strechSmalButton { font-size: 96px; height: 200px; min-width: 30% }
+
+#levelSelBtn > span { display: block }
+#levelSelBtn > span:first-child { font-size: 128px }
+#levelSelBtn > span:last-child { font-size: 56px }
+
+.overlayButtons {
+	bottom: 10px;
 	position: absolute;
 	width: 100%;
 }
-#levelDisplay > div { padding-bottom: 50px }
-#levelInfoButtons {
-    position: absolute;
-    bottom: 0;
-    width: 98%;
-}
-#levelInfo > div { font-size: 96px; text-align: center }
-#levelInfoScoreSection { font-size: 84px !important }
+#overlayButtonsA { position: initial }
 
-#overlayTextCropInfo { margin-top: 40px }
+#errorButton {
+	bottom: 20px;
+	margin: 0 auto;
+	position: absolute;
+	width: 100%;
+}
+
+/******************************* 3. ANIMATION *******************************/
+.loading {
+	animation: loader 2s linear infinite;
+	background-image: url("images/loading.png");
+	height: 160px;
+	margin: 0 auto;
+    margin-top: 480px;
+	width: 160px;
+}
+@keyframes loader { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
+
+@keyframes jump1 { from { top: 0 } to { top: -192px } }
+@keyframes drop1 { from { top: 0 } to { top: 192px } }
+@keyframes drop2 { from { top: 0 } to { top: 384px } }
+@keyframes drop3 { from { top: 0 } to { top: 546px } }
+@keyframes drop4 { from { top: 0 } to { top: 768px } }
+@keyframes drop5 { from { top: 0 } to { top: 960px } }
+@keyframes drop6 { from { top: 0 } to { top: 1152px } }
+@keyframes drop7 { from { top: 0 } to { top: 1344px } }
+@keyframes drop8 { from { top: 0 } to { top: 1536px } }
+.dropping { position: relative; animation-duration: 0.25s;  animation-iteration-count: 1; animation-fill-mode: forwards; }
+.dropping1 { animation-name: drop1 }
+.dropping2 { animation-name: drop2 }
+.dropping3 { animation-name: drop3 }
+.dropping4 { animation-name: drop4 }
+.dropping5 { animation-name: drop5 }
+.dropping6 { animation-name: drop6 }
+.dropping7 { animation-name: drop7 }
+.dropping8 { animation-name: drop8 }
+.jumping1 { animation-name: jump1 }
+
+.weedWhack {
+	animation: whack;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	background-position: -2496px -192px;
+	display: inline-block;
+	height: 384px !important;
+	width: 384px !important;
+	position: absolute;
+    right: 0;
+}
+@keyframes whack { 
+	0% { right: -10%; margin-top: 0 }
+	10% { right: 0%; margin-top: -98px } /* -196px */
+	20% { right: 10%; margin-top: 0 }
+	30% { right: 20%; margin-top: -98px }
+	40% { right: 30%; margin-top: 0 }
+	50% { right: 40%; margin-top: -98px }
+	60% { right: 50%; margin-top: 0 }
+	70% { right: 60%; margin-top: -98px }
+	80% { right: 70%; margin-top: 0 }
+	90% { right: 80%; margin-top: -98px }
+	100% { right: 90%; margin-top: 0 }
+}
+
+.scoreParticle, .timeParticle, .comboParticle {
+	animation: score;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	background-image: url("images/particles.png");
+	display: inline-block;
+	height: 116px;
+	position: absolute;
+	width: 143px;
+}
+.comboParticle {
+	animation: score2;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	background-image: url("images/particles_big.png");
+	height: 348px;
+	width: 429px;
+	right: 0%;
+}
+@keyframes score2 {
+	0% { bottom: 0; opacity: 0; }
+	45% { bottom: 10px; opacity: 1; }
+	55% { bottom: 20px; opacity: 1; }
+	100% { bottom: 30px; opacity: 0; }
+}
+@keyframes score {
+	0% { top: 40px; opacity: 0; }
+	45% { top: 22px; opacity: 1; }
+	55% { top: 18px; opacity: 1; }
+	100% { top: 0; opacity: 0; }
+}
+
+/******************************* 4. PARTICLES *******************************/
+.crop_particle { position: absolute; z-index: 100 }
+
+.scoreParticle { right: 15% }
+.timeParticle { left: 40% }
+.scoreParticle.f2, .timeParticle.f2 { background-position: -143px 0 }
+.comboParticle.f2 { background-position: -429px 0 }
+.scoreParticle > span, .timeParticle > span, .comboParticle > span {
+	display: table-cell;
+	font-size: 32px;
+    height: 116px;
+    text-align: center;
+    vertical-align: middle;
+    width: 143px;
+}
+.comboParticle > span { height: 348px; width: 429px }
+.comboParticle > span > span { font-size: 72px }
+
+/********************************* 5. MENUS *********************************/
+#mainMenu { text-align: center }
+#logo { margin: 0 auto; left: 0; right: 0; margin-top: 360px; }
 
 #optionsMenu, #aboutMenu, #errorMessage {
 	background: #E88B00;
@@ -116,12 +358,6 @@ body {
 	top: 0;
 	width: 100%;
 	z-index: 1001;
-}
-#errorButton {
-	bottom: 20px;
-	margin: 0 auto;
-	position: absolute;
-	width: 100%;
 }
 #optionsMenu > div, #aboutMenu > div, #errorMessage > div { font-size: 72px }
 .exitSettings, .exitError {
@@ -164,40 +400,10 @@ table .val { text-align: right; width: 15% }
 .img > img { border-radius: 50px; width: 100px }
 .that-me { color: #DD5A15 }
 
-.fancyButton {
-	background: #E88B00;
-	border: 30px solid transparent;
-	border-image: url("images/border.png") 27;
-	padding: 6px 24px;
-}
-#levelSelBtn > span { display: block }
-#levelSelBtn > span:first-child { font-size: 128px }
-#levelSelBtn > span:last-child { font-size: 56px }
-.fancyButton.mode { display: inline-block; margin: 0 20px; width: 450px; }
-.fancyButton.mode > span { display: block }
-.fancyButton.mode > span:first-child { font-size: 96px }
-.fancyButton.mode > span:last-child { font-size: 56px }
 
-.textbox {
-	background: #E88B00;
-	border: 30px solid transparent;
-	border-image: url("images/border.png") 27;
-	text-align: left;
-	width: 90%;
-	bottom: 10px;
-	height: 25%;
-	position: absolute;
-	left: 0;
-	right: 0;
-	margin: 0 auto;
-}
+
+/******************************** 6. IN-GAME ********************************/
 #tutorial { height: 15% }
-.textbox > div { font-size: 64px; padding: 25px 35px }
-#levelInfo {
-	height: 75%;
-	position: relative;
-	top: 50px;
-}
 #pointer {
 	background-image: url("images/pointyfinger.png");
 	position: absolute;
@@ -206,286 +412,9 @@ table .val { text-align: right; width: 15% }
 	z-index: 9999;
 }
 
-@keyframes jump1 { from { top: 0 } to { top: -192px } }
-@keyframes drop1 { from { top: 0 } to { top: 192px } }
-@keyframes drop2 { from { top: 0 } to { top: 384px } }
-@keyframes drop3 { from { top: 0 } to { top: 546px } }
-@keyframes drop4 { from { top: 0 } to { top: 768px } }
-@keyframes drop5 { from { top: 0 } to { top: 960px } }
-@keyframes drop6 { from { top: 0 } to { top: 1152px } }
-@keyframes drop7 { from { top: 0 } to { top: 1344px } }
-@keyframes drop8 { from { top: 0 } to { top: 1536px } }
-.dropping { position: relative; animation-duration: 0.25s;  animation-iteration-count: 1; animation-fill-mode: forwards; }
-.dropping1 { animation-name: drop1 }
-.dropping2 { animation-name: drop2 }
-.dropping3 { animation-name: drop3 }
-.dropping4 { animation-name: drop4 }
-.dropping5 { animation-name: drop5 }
-.dropping6 { animation-name: drop6 }
-.dropping7 { animation-name: drop7 }
-.dropping8 { animation-name: drop8 }
-.jumping1 { animation-name: jump1 }
-
+.cropRow { line-height: 0; text-align: center }
 .cropRow > div { text-align: center }
-.sprite {
-	background: url("images/sheet.png");
-	display: inline-block;
-	height: 192px;
-	width: 192px;
-}
-.sprite.small { height: 96px; width: 96px }
-
-.bee {
-	background-position: -2304px -192px;
-	margin-left: -100px;
-	margin-top: -4px;
-	pointer-events: none;
-	position: absolute;
-}
-.bee.f2 { background-position: -2400px -192px }
-.poof {
-	background-position: -2016px -192px;
-	margin-left: -100px;
-	margin-top: -4px;
-	position: absolute;
-}
-.poof.p2 { background-position: -2112px -192px }
-.poof.p3 { background-position: -2208px -192px }
-.message { text-align:left; display:inline-block }
-br.gap { line-height: 1.5 }
-.msgsource {
-    bottom: 250px;
-    position: absolute;
-    right: 20px;
-}
-
-.crop.paused, .bee.paused, .poof.paused { background: none }
-.weedWhack {
-	animation: whack;
-	animation-duration: 1s;
-	animation-iteration-count: 1;
-	animation-fill-mode: forwards;
-	background-position: -2496px -192px;
-	display: inline-block;
-	height: 384px !important;
-	width: 384px !important;
-	position: absolute;
-    right: 0;
-}
-@keyframes whack { 
-	0% { right: -10%; margin-top: 0 }
-	10% { right: 0%; margin-top: -98px } /* -196px */
-	20% { right: 10%; margin-top: 0 }
-	30% { right: 20%; margin-top: -98px }
-	40% { right: 30%; margin-top: 0 }
-	50% { right: 40%; margin-top: -98px }
-	60% { right: 50%; margin-top: 0 }
-	70% { right: 60%; margin-top: -98px }
-	80% { right: 70%; margin-top: 0 }
-	90% { right: 80%; margin-top: -98px }
-	100% { right: 90%; margin-top: 0 }
-}
-#innerCropInfo { display: inline-block }
-#weedWhackBtn { display: inline-block; vertical-align: top }
-#weedWhackBtn > div { float: left }
-#weedWhackBtn > span {
-	display: block;
-	float: right;
-}
-
-.crop_particle { position: absolute; z-index: 100 }
-
-.c_carrot_0 { background-position: -192px 0 }
-.c_carrot_1 { background-position: -384px 0 }
-.c_carrot { background-position: -576px 0 }
-
-.c_corn_0 { background-position: -768px 0 }
-.c_corn_1 { background-position: -960px 0 }
-.c_corn_2 { background-position: -1152px 0 }
-.c_corn_3 { background-position: -1344px 0 }
-.c_corn { background-position: -1536px 0 }
-
-.c_cucumber_0 { background-position: -1728px 0 }
-.c_cucumber_1 { background-position: -1920px 0 }
-.c_cucumber_2 { background-position: -2112px 0 }
-.c_cucumber { background-position: -2304px 0 }
-
-.c_tomato_0 {
-	background-position: -2496px -96px;
-	height: 96px;
-	margin-top: 96px;
-}
-.c_tomato_1 { background-position: -2688px 0 }
-.c_tomato_2 { background-position: -2304px -384px }
-.c_tomato { background-position: 0 -192px }
-
-.c_pumpkin_0 { background-position: -192px -192px }
-.c_pumpkin_1 { background-position: -384px -192px }
-.c_pumpkin_2 { background-position: -576px -192px }
-.c_pumpkin_3 { background-position: -768px -192px }
-.c_pumpkin { background-position: -960px -192px }
-
-.c_strawberry_0 { background-position: -1152px -192px }
-.c_strawberry_1 { background-position: -1344px -192px }
-.c_strawberry_2 { background-position: -1536px -192px }
-.c_strawberry { background-position: -1728px -192px }
-
-.s_mower { background-position: -1920px -192px }
-
-.HD .sprite, .HD .infobar { background-image: url("images/sheet_HD.png") !important }
-
-.acc .sprite { background-image: url("images/sheet_acc.png") !important }
-.cb .sprite, .cb .infoBar { background-image: url("images/sheet_cb.png") !important }
-
-.acc.HD .sprite { background-image: url("images/sheet_HD_acc.png") !important }
-.cb.HD .sprite, .cb.HD .infoBar { background-image: url("images/sheet_HD_cb.png") !important }
-.infoBar {
-	background-image: url("images/sheet.png");
-	display: inline-block;
-	font-size: 48px;
-	height: 96px;
-	margin: 2px 0;
-	text-align: right;
-	width: 280px;
-}
-.infoBar.cucumber { background-position: -1152px -384px }
-.infoBar.tomato { background-position: -1440px -384px }
-.infoBar.strawberry { background-position: -1728px -384px }
-.infoBar.corn { background-position: -1152px -480px }
-.infoBar.carrot { background-position: -1440px -480px }
-.infoBar.pumpkin { background-position: -1728px -480px }
-.infoBar.any {  background-position: -2016px -480px }
-.infoBar.time { background-position: -2016px -384px }
-.infoBar.score { background-position: -2056px -288px; width: 404px }
-.infoBar.OK { background-position: -2520px 0; width: 145px }
-.infoBar > span {
-    display: table-cell;
-    height: 100px;
-    padding-right: 40px;
-    vertical-align: middle;
-    width: 280px;
-}
-.infoBar.forbidden:before {
-    background-image: url("images/sheet.png");
-	background-position: -1929px -297px;
-    content: " ";
-    float: left;
-    height: 80px;
-    margin-left: 15px;
-    margin-top: 10px;
-    width: 88px;
-}
-.infoBar.score > span { width: 404px }
-
-#shipInfo {
-	background: #FFA826;
-	border: 5px solid black;
-	margin: 20px auto;
-	padding-bottom: 10px;
-	width: 1024px;
-}
-#shipText {
-	font-size: 48px;
-	padding-top: 10px;
-	margin-bottom: 10px;
-	border-bottom: 5px solid black;
-}
-#shipItems { height: 208px }
-.gardenInfo { font-size: 44px }
-
-#mainMenu { text-align: center }
-#logo { margin: 0 auto; left: 0; right: 0; margin-top: 360px; }
-
-.levelIcon, .choiceIcon {
-	background-image: url("images/tiles.png");
-	display: inline-block;
-	font-size: 72px;
-	height: 300px;
-	text-align: center;
-	width: 300px;
-}
-.levelIcon > div { padding-top: 100px }
-.android .levelIcon > div { padding-top: 120px }
-
-.extraOption { margin: 20px }
-.settingsGear { background-position: 0 -384px }
-.settingsGear:hover, .settingsGear:active { background-position: -192px -384px }
-.aboutButton { background-position: -384px -384px }
-.aboutButton:hover, .aboutButton:active { background-position: -576px -384px }
-.gardenButton { background-position: -768px -384px }
-.gardenButton:hover, .gardenButton:active { background-position: -960px -384px }
-#pollenCount {
-    font-size: 72px;
-    min-width: 66%;
-    display: inline-block;
-    margin-top: 20px;
-}
-
-
-.levelIcon.selectedLevel, .choiceIcon.selectedLevel { background-position: -300px 0 !important; color: #996600 }
-.levelIcon.complete { background-position: -600px 0 }
-.bigLevelIcon { background-position: 0 -300px }
-.bigLevelIcon.selectedLevel { background-position: -300px -300px !important; color: #996600 }
-.bigLevelIcon.complete { background-position: -600px -300px }
-.levelIcon:not(:last-child):after {
-    background: #000000;
-    content: "";
-    display: block;
-    height: 10px;
-    left: 250px;
-    position: relative;
-    top: -45px;
-    width: 100px;
-    z-index: -5;
-}
-
-.scoreParticle, .timeParticle, .comboParticle {
-	animation: score;
-	animation-duration: 1s;
-	animation-iteration-count: 1;
-	animation-fill-mode: forwards;
-	background-image: url("images/particles.png");
-	display: inline-block;
-	height: 116px;
-	position: absolute;
-	width: 143px;
-}
-.comboParticle {
-	animation: score2;
-	animation-duration: 1s;
-	animation-iteration-count: 1;
-	animation-fill-mode: forwards;
-	background-image: url("images/particles_big.png");
-	height: 348px;
-	width: 429px;
-	right: 0%;
-}
-.scoreParticle { right: 15% }
-.timeParticle { left: 40% }
-.scoreParticle.f2, .timeParticle.f2 { background-position: -143px 0 }
-.comboParticle.f2 { background-position: -429px 0 }
-.scoreParticle > span, .timeParticle > span, .comboParticle > span {
-	display: table-cell;
-	font-size: 32px;
-    height: 116px;
-    text-align: center;
-    vertical-align: middle;
-    width: 143px;
-}
-.comboParticle > span { height: 348px; width: 429px }
-.comboParticle > span > span { font-size: 72px }
-@keyframes score2 {
-	0% { bottom: 0; opacity: 0; }
-	45% { bottom: 10px; opacity: 1; }
-	55% { bottom: 20px; opacity: 1; }
-	100% { bottom: 30px; opacity: 0; }
-}
-@keyframes score {
-	0% { top: 40px; opacity: 0; }
-	45% { top: 22px; opacity: 1; }
-	55% { top: 18px; opacity: 1; }
-	100% { top: 0; opacity: 0; }
-}
+.gameInfo, .cropInfo { text-align: center }
 
 .fullCover {
     background: rgba(255, 255, 255, 0.2);
@@ -520,48 +449,132 @@ br.gap { line-height: 1.5 }
 	margin: 0 auto;
 	width: 80%;
 }
-.overlayButtons {
-	bottom: 10px;
-	position: absolute;
-	width: 100%;
-}
-#overlayButtonsA { position: initial }
-.bigButton { font-size: 148px; height: 500px; width: 60% }
-.medButton { font-size: 120px; height: 300px; width: 40% }
-.smalButton { font-size: 96px; height: 200px; width: 30% }
-.strechSmalButton { font-size: 96px; height: 200px; min-width: 30% }
-button.nav {
-    background-color: #EEEEEE;
-    border: 10px solid #CCCCCC;
-    border-radius: 75px;
-    color: #999999;
-    height: 150px;
-    opacity: 0.9;
-    position: absolute;
-    top: 40%;
-    width: 150px;
-}
-button.nav:hover, button.nav:active { background: #EEEEEE; border-color: #CCCCCC; color: #999999; opacity: 1.0 }
+
 #navRight { right: 5px }
 #navLeft { left: 5px }
 .overlayText { padding-top: 40px }
 .overlayText > span { font-size: 70px }
-button {
-	background: #FFAC2F;
-	border: 5px solid #704300;
-	border-radius: 8px;
+
+#overlayTextCropInfo { margin-top: 40px }
+
+.crop.paused, .bee.paused, .poof.paused { background: none }
+
+#innerCropInfo { display: inline-block }
+#weedWhackBtn { display: inline-block; vertical-align: top }
+#weedWhackBtn > div { float: left }
+#weedWhackBtn > span {
 	display: block;
-	font-family: Nevis !important;
-	font-size: 72px;
-	margin: 20px auto;
-	padding: 24px 48px;
-	text-align: center;
-	white-space: nowrap;
+	float: right;
 }
-button:hover { background: #FFA51E; border-color: #996600; color: #996600 }
-button:active { background: #CA7900; border-color: #000000; color: #000000 }
+#shipInfo {
+	background: #FFA826;
+	border: 5px solid black;
+	margin: 20px auto;
+	padding-bottom: 10px;
+	width: 1024px;
+}
+#shipText {
+	font-size: 48px;
+	padding-top: 10px;
+	margin-bottom: 10px;
+	border-bottom: 5px solid black;
+}
+#shipItems { height: 208px }
+.gardenInfo { font-size: 44px }
+#pollenCount {
+    font-size: 72px;
+    min-width: 66%;
+    display: inline-block;
+    margin-top: 20px;
+}
+.message { text-align:left; display:inline-block }
+br.gap { line-height: 1.5 }
+.msgsource {
+    bottom: 250px;
+    position: absolute;
+    right: 20px;
+}
 
-.quitGame { font-size: 48px }
+/***************************** 7. LEVEL SELECT ******************************/
+#levelDisplay {
+	bottom: 0px;
+	overflow-x: auto;
+	position: absolute;
+	width: 100%;
+}
+#levelDisplay > div { padding-bottom: 50px }
+#levelInfoButtons {
+    position: absolute;
+    bottom: 0;
+    width: 98%;
+}
+#levelInfo > div { font-size: 96px; text-align: center }
+#levelInfoScoreSection { font-size: 84px !important }
+#levelInfo {
+	height: 75%;
+	position: relative;
+	top: 50px;
+}
+.levelIcon, .choiceIcon {
+	background-image: url("images/tiles.png");
+	display: inline-block;
+	font-size: 72px;
+	height: 300px;
+	text-align: center;
+	width: 300px;
+}
+.levelIcon > div { padding-top: 100px }
+.android .levelIcon > div { padding-top: 120px }
+.levelIcon.selectedLevel, .choiceIcon.selectedLevel { background-position: -300px 0 !important; color: #996600 }
+.levelIcon.complete { background-position: -600px 0 }
+.bigLevelIcon { background-position: 0 -300px }
+.bigLevelIcon.selectedLevel { background-position: -300px -300px !important; color: #996600 }
+.bigLevelIcon.complete { background-position: -600px -300px }
+.levelIcon:not(:last-child):after {
+    background: #000000;
+    content: "";
+    display: block;
+    height: 10px;
+    left: 250px;
+    position: relative;
+    top: -45px;
+    width: 100px;
+    z-index: -5;
+}
 
-.gameInfo, .cropInfo { text-align: center }
-.cropRow { line-height: 0; text-align: center }
+/****************************** 8. MISC. TEXT *******************************/
+.bottom {
+	bottom: 0;
+	right: 25px;
+	width: 100%;
+	text-align: right;
+	font-size: 68px !important;
+	position: absolute;
+}
+.bottom img { margin-bottom: -18px }
+
+#loadingScreen { margin-top: 50% }
+#l2 { font-size: 128px; margin-top: 40px; text-align: center }
+
+.textbox {
+	background: #E88B00;
+	border: 30px solid transparent;
+	border-image: url("images/border.png") 27;
+	text-align: left;
+	width: 90%;
+	bottom: 10px;
+	height: 25%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}
+.textbox > div { font-size: 64px; padding: 25px 35px }
+#debugInfo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	border: 1px solid black;
+	background-color: #FFFFFF;
+}
