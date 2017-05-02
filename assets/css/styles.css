@@ -1,6 +1,6 @@
 @font-face { font-family: Nevis; src: url("fonts/nevis.ttf"); }
 .browser button, .browser .fullCoverText, .browser .exitSettings, .browser .fullCover, .browser .levelIcon, 
-.browser .choiceIcon, .browser .settingsGear, .browser .aboutButton, .browser .crop, .browser #errorBg, .browser .exitError { cursor: pointer }
+.browser .choiceIcon, .browser .extraOption, .browser .crop, .browser #errorBg, .browser .exitError { cursor: pointer }
 
 *, *:active, *:focus {
 	-webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important; 
@@ -265,14 +265,13 @@ br.gap { line-height: 1.5 }
 	animation-duration: 1s;
 	animation-iteration-count: 1;
 	animation-fill-mode: forwards;
-	background: url("images/weedwhacker.png");
+	background-position: -2496px -192px;
 	display: inline-block;
-	height: 384px;
-	width: 384px;
+	height: 384px !important;
+	width: 384px !important;
 	position: absolute;
     right: 0;
 }
-.HD .weedWhack { background: url("images/weedwhacker_hd.png") }
 @keyframes whack { 
 	0% { right: -10%; margin-top: 0 }
 	10% { right: 0%; margin-top: -98px } /* -196px */
@@ -311,9 +310,13 @@ br.gap { line-height: 1.5 }
 .c_cucumber_2 { background-position: -2112px 0 }
 .c_cucumber { background-position: -2304px 0 }
 
-.c_tomato_0 { background-position: -2496px 0 }
+.c_tomato_0 {
+	background-position: -2496px -96px;
+	height: 96px;
+	margin-top: 96px;
+}
 .c_tomato_1 { background-position: -2688px 0 }
-.c_tomato_2 { background-position: -2880px 0 }
+.c_tomato_2 { background-position: -2304px -384px }
 .c_tomato { background-position: 0 -192px }
 
 .c_pumpkin_0 { background-position: -192px -192px }
@@ -329,34 +332,32 @@ br.gap { line-height: 1.5 }
 
 .s_mower { background-position: -1920px -192px }
 
-.HD .sprite { background-image: url("images/sheet_HD.png") !important }
-.HD .infoBar { background-image: url("images/info_HD.png") !important }
-.HD .infoBar.any { background-image: url("images/info_all_HD.png") !important }
+.HD .sprite, .HD .infobar { background-image: url("images/sheet_HD.png") !important }
 
 .acc .sprite { background-image: url("images/sheet_acc.png") !important }
-.cb .sprite { background-image: url("images/sheet_cb.png") !important }
-.cb .infoBar { background-image: url("images/info_cb.png") !important }
+.cb .sprite, .cb .infoBar { background-image: url("images/sheet_cb.png") !important }
 
 .acc.HD .sprite { background-image: url("images/sheet_HD_acc.png") !important }
-.cb.HD .sprite { background-image: url("images/sheet_HD_cb.png") !important }
-.cb.HD .infoBar { background-image: url("images/info_HD_cb.png") !important }
+.cb.HD .sprite, .cb.HD .infoBar { background-image: url("images/sheet_HD_cb.png") !important }
 .infoBar {
-	background-image: url("images/info.png");
+	background-image: url("images/sheet.png");
 	display: inline-block;
 	font-size: 48px;
-	height: 100px;
+	height: 96px;
+	margin: 2px 0;
 	text-align: right;
 	width: 280px;
 }
-.infoBar.any { background-image: url("images/info_all.png") }
-.infoBar.tomato { background-position: -280px 0 }
-.infoBar.strawberry { background-position: -560px 0 }
-.infoBar.corn { background-position: 0 -100px }
-.infoBar.carrot { background-position: -280px -100px }
-.infoBar.pumpkin { background-position: -560px -100px }
-.infoBar.time { background-position: 0 -200px }
-.infoBar.score { background-position: -280px -200px; width: 404px }
-.infoBar.OK { background-position: -690px -200px; width: 145px }
+.infoBar.cucumber { background-position: -1152px -384px }
+.infoBar.tomato { background-position: -1440px -384px }
+.infoBar.strawberry { background-position: -1728px -384px }
+.infoBar.corn { background-position: -1152px -480px }
+.infoBar.carrot { background-position: -1440px -480px }
+.infoBar.pumpkin { background-position: -1728px -480px }
+.infoBar.any {  background-position: -2016px -480px }
+.infoBar.time { background-position: -2016px -384px }
+.infoBar.score { background-position: -2056px -288px; width: 404px }
+.infoBar.OK { background-position: -2520px 0; width: 145px }
 .infoBar > span {
     display: table-cell;
     height: 100px;
@@ -365,7 +366,8 @@ br.gap { line-height: 1.5 }
     width: 280px;
 }
 .infoBar.forbidden:before {
-    background-image: url(images/x.png);
+    background-image: url("images/sheet.png");
+	background-position: -1929px -297px;
     content: " ";
     float: left;
     height: 80px;
@@ -394,7 +396,7 @@ br.gap { line-height: 1.5 }
 #mainMenu { text-align: center }
 #logo { margin: 0 auto; left: 0; right: 0; margin-top: 360px; }
 
-.levelIcon, .choiceIcon, .settingsGear, .aboutButton, .gardenButton {
+.levelIcon, .choiceIcon {
 	background-image: url("images/tiles.png");
 	display: inline-block;
 	font-size: 72px;
@@ -404,10 +406,14 @@ br.gap { line-height: 1.5 }
 }
 .levelIcon > div { padding-top: 100px }
 .android .levelIcon > div { padding-top: 120px }
-.aboutButton { background-image: url("images/about.png") }
-.settingsGear { background-image: url("images/gear.png") }
-.gardenButton { background-image: url("images/flower.png") }
-.settingsGear:hover, .settingsGear:active, .aboutButton:hover, .aboutButton:active, .gardenButton:hover, .gardenButton:active { background-position: -300px 0 }
+
+.extraOption { margin: 20px }
+.settingsGear { background-position: 0 -384px }
+.settingsGear:hover, .settingsGear:active { background-position: -192px -384px }
+.aboutButton { background-position: -384px -384px }
+.aboutButton:hover, .aboutButton:active { background-position: -576px -384px }
+.gardenButton { background-position: -768px -384px }
+.gardenButton:hover, .gardenButton:active { background-position: -960px -384px }
 #pollenCount {
     font-size: 72px;
     min-width: 66%;
@@ -415,8 +421,6 @@ br.gap { line-height: 1.5 }
     margin-top: 20px;
 }
 
-.sg2 { display: inline-block !important; margin: 0 auto; left: 0; right: 0 }
-.sg3 { float: right; padding: 0 !important }
 
 .levelIcon.selectedLevel, .choiceIcon.selectedLevel { background-position: -300px 0 !important; color: #996600 }
 .levelIcon.complete { background-position: -600px 0 }
