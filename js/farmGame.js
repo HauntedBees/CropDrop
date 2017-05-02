@@ -460,7 +460,7 @@ var wateringGame = {
 				if(pairs.length >= 2) { pairPairs.push(pairs); }
 			}
 		}
-		if(pairPairs.length == 0) {
+		if(pairPairs.length == 0 && wateringGame.whackers == 0) {
 			clearInterval(wateringGame.timerIdx);
 			wateringGame.gameOver("No More Options!");
 		}
