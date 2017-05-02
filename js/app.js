@@ -88,6 +88,10 @@ limitations under the License.*/
 	$("#about").on("click", menuNav.showAbout);
 	$(".gardenButton").on("click", beeGarden.start);
 	$(".settingsGear").on("click", menuNav.showSettings);
+	$("#leave").on("click", function() {
+		wateringGame.inStoryMode = false;
+		menuNav.quitToMenuInGame();
+	});
 	$(".quitToMenu").on("click", menuNav.quitToMenuInGame);
 	$(".toMainMenu").on("click", menuNav.returnToMainMenu);
 	$(".exitSettings, #optionsOverlay").on("click", menuNav.exitSettingsOrAbout);
