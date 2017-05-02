@@ -23,7 +23,7 @@ var beeGarden = {
 		$(".comboParticle,.poof,.bee,.scoreParticle,.timeParticle").remove();
 		$(".overlayButtons, .overlayAltText,.overlayTap, #overlayText, #overlayButtonsNav,#mainGame,#menuBtn,.gameOverTap,.infoBar,#mainCropInfo,#pause").hide();
 		$(".fullCoverText").removeClass("large medium small").addClass("medium");
-		$("#cropGame,#gardenCropInfo,#leave").show();
+		$("#cropGame,#gardenCropInfo,#leave,#beeFacts").show();
         $("#pollenCount").text("Pollen Gathered: " + settings.pollen);
         $("#shipText").text("Your Garden");
         $("#shipItems").html("<span class='gardenInfo'>Welcome to your garden. Bees bring the pollen they gather here to help crops grow. When a crop is ready to harvest, tap it to receive a message from the bees.</span>");

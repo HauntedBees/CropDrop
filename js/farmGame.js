@@ -28,9 +28,7 @@ var wateringGame = {
 		clearInterval(wateringGame.modeTimerIdx);
 		clearInterval(wateringGame.timerIdx);
 		music.playFresh("happy");
-		$("#pointer").hide();
 		$(".forbidden").removeClass("forbidden");
-		$(".overlayTap").hide();
 		$(".infoBar.main > span").text("0");
 		$(".comboParticle,.poof,.bee,.scoreParticle,.timeParticle").remove();
 		wateringGame.mode = mode || 2;
@@ -38,7 +36,7 @@ var wateringGame = {
 		wateringGame.shipmentDifficulty = 1;
 		wateringGame.inStoryMode = (levelNumber !== undefined);
 		wateringGame.paused = true;
-		$(".overlayButtons, .overlayAltText").hide();
+		$("#pointer,.overlayButtons,.overlayAltText,#beeFacts").hide();
 		$(".overlayTap, #overlayText, #overlayButtonsNav").show();
 		$(".fullCoverText").removeClass("large medium small").addClass("medium");
 		if(wateringGame.inStoryMode) {

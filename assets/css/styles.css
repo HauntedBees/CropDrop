@@ -16,7 +16,7 @@
 a { color: #502300; text-decoration: none }
 a:active { color: #996600 }
 a:visited { color: #502300 }
-#bottom {
+.bottom {
 	bottom: 0;
 	right: 25px;
 	width: 100%;
@@ -24,7 +24,7 @@ a:visited { color: #502300 }
 	font-size: 68px !important;
 	position: absolute;
 }
-#bottom img { margin-bottom: -18px }
+.bottom img { margin-bottom: -18px }
 
 #debugInfo {
 	position: absolute;
