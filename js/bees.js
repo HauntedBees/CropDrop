@@ -68,6 +68,7 @@ var beeGarden = {
 			if(tile.stage != tile.finalStage) { return; }
             beeGarden.showMessage();
             wateringGame.board[y][x] = 0;
+            settings.garden[y][x] = 0;
             wateringGame.drawBoard();
             SaveGame();
 		});
@@ -158,7 +159,7 @@ var beeGarden = {
         ["Aly", "Humans see color in red, green, and blue, but bees see in blue, green, and ultraviolet!", "http://www.buzzaboutbees.net/bee-facts.html"],
         ["Chloe", "The land of 'Milk and Honey' is actually a few kilometers away a shopping mall parking lot in Minnesota."],
         ["Selena", "Bees have solved the 'travelling salesman problem' - the problem of finding the shortest route between several points. That's something even humans can't do easily!", "http://mentalfloss.com/article/53691/13-fascinating-facts-about-bees"],
-        ["Jaclyn", "Honey bee swarms look pretty intimidating but usually bees in swarms aren't very aggressive at all. If you see one, call a beekeeper to relocate it!", "https://en.wikipedia.org/wiki/Swarming_(honey_bee)"],
+        ["Jaclyn", "Honey bee swarms look pretty intimidating, but usually bees in swarms aren't very aggressive at all. If you see one, call a beekeeper to relocate it!", "https://en.wikipedia.org/wiki/Swarming_(honey_bee)"],
         ["Hanna", "Although honey bees are very social, many types of bees are very solitary and roam the world on their own.", "https://en.wikipedia.org/wiki/Bee"],
         ["Denise", "Help the Bee Mafia has kidnapped my husband and if I don't keep making bee jokes for this game they'll--WHAT DO BEES WAX THEIR CARS WITH? BEESWAX! HA HA HA HA!"],
         ["Nahla", "Bumblebees are cute!"],
