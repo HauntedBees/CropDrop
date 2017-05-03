@@ -32,10 +32,10 @@ var beeGarden = {
         wateringGame.height = 8;
         var lastVisit = (new Date() - new Date(settings.lastGardenVisit)) / 60000; // in minutes
         beeGarden.growVeggies(lastVisit);
-        var maxCropsToGenerate = (settings.pollen / 25) - settings.cropsGrown;
+        var maxCropsToGenerate = (settings.pollen / 20) - settings.cropsGrown;
         if(maxCropsToGenerate > 0) {
-            while(lastVisit > 8 && maxCropsToGenerate > 0) {
-                lastVisit -= 8;
+            while(lastVisit > 5 && maxCropsToGenerate > 0) {
+                lastVisit -= 5;
                 if(Math.random() > 0.65) {
                     maxCropsToGenerate -= 1;
                     beeGarden.addVeggie();

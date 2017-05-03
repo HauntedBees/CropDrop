@@ -514,7 +514,7 @@ var wateringGame = {
 					var count = parseInt($info.text()) + 1;
 					if($("#crop" + x + "_" + y + " .bee").length) {
 						beeMultiplier += 0.1;
-						settings.pollen += Math.ceil(Math.random() * 5);
+						settings.pollen += 2 + Math.ceil(Math.random() * 15);
 						SaveGame();
 					}
 					$info.text(count);
