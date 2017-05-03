@@ -514,8 +514,29 @@ var wateringGame = {
 					var count = parseInt($info.text()) + 1;
 					if($("#crop" + x + "_" + y + " .bee").length) {
 						beeMultiplier += 0.1;
-						settings.pollen += 2 + Math.ceil(Math.random() * 15);
+						var pollenCount = 2 + Math.ceil(Math.random() * 15);
+						settings.pollen += pollenCount;
 						SaveGame();
+						if(pollenCount > 5) { pollenCount = 5; }
+						var pollenCenterX = Math.ceil(pollenCount / 2);
+						var pollenPos = $("#crop" + x + "_" + y).position();
+						pollenPos.left += $("#crop" + x + "_" + y).width();
+						for(var p = 0; p < pollenCount; p++) {
+							var $poof = $("<div class='crop_particle sprite small poof'>");
+							$("#cropGame").append($poof);
+							var dx = p - pollenCenterX;
+							var path = new $.path.bezier({
+								start: {
+									x: pollenPos.left,
+									y: pollenPos.top
+								},
+								end: {
+									x: pollenPos.left + (dx * 500), 
+									y: pollenPos.top + 4000
+								}
+							});
+							$poof.animate({path: path}, 2000, "swing", function() { $(this).remove() });
+						}
 					}
 					$info.text(count);
 					wateringGame.shipCrop(tile.type);
@@ -529,8 +550,8 @@ var wateringGame = {
 					}
 					wateringGame.board[y][x] = 0;
 					var $newGuy = $("<div class='crop_particle sprite c_" + tile.type + "'>");
-					$("#cropGame").append($newGuy);
 					var pos = $("#crop" + x + "_" + y).position();
+					$("#cropGame").append($newGuy);
 					var path = new $.path.bezier({
 						start: {
 							x: pos.left,

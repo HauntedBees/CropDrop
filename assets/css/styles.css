@@ -299,6 +299,7 @@ button.nav:hover, button.nav:active { background: #EEEEEE; border-color: #CCCCCC
 
 /******************************* 4. PARTICLES *******************************/
 .crop_particle { position: absolute; z-index: 100 }
+.crop_particle.small { position: absolute; z-index: 150 }
 
 .scoreParticle { right: 15% }
 .timeParticle { left: 40% }
