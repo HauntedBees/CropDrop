@@ -523,6 +523,12 @@ var wateringGame = {
 						pollenPos.left += $("#crop" + x + "_" + y).width();
 						for(var p = 0; p < pollenCount; p++) {
 							var $poof = $("<div class='crop_particle sprite small poof'>");
+							var rotation = "rotate(" + Math.floor(Math.random() * 360) + "deg)";
+							$poof.css({
+								"-ms-transform": rotation,
+								"-webkit-transform": rotation,
+								"transform": rotation
+							});
 							$("#cropGame").append($poof);
 							var dx = p - pollenCenterX;
 							var path = new $.path.bezier({
@@ -550,6 +556,7 @@ var wateringGame = {
 					}
 					wateringGame.board[y][x] = 0;
 					var $newGuy = $("<div class='crop_particle sprite c_" + tile.type + "'>");
+					var rotation = Math.floor(Math.random() * 360);
 					var pos = $("#crop" + x + "_" + y).position();
 					$("#cropGame").append($newGuy);
 					var path = new $.path.bezier({
@@ -563,6 +570,16 @@ var wateringGame = {
 						}
 					});
 					$newGuy.animate({path: path}, 2000, "swing", function() { $(this).remove() });
+					$({deg: 0}).animate({deg: rotation}, {
+						duration: 1500, 
+						step: function(now) {
+							$newGuy.css({
+								transform: "rotate(" + now + "deg)",
+								"-ms-transform": "rotate(" + now + "deg)",
+								"-webkit-transform": "rotate(" + now + "deg)"
+							});
+						}
+					});
 				}
 			}
 			switch(tileType) {
