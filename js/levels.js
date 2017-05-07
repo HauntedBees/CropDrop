@@ -117,12 +117,15 @@ var scoreDisplay = {
 		var lNum = wateringGame.getLevelNumForScores();
 		if(newState == 0) {
 			$("#overlayText, #navRight").show();
+			$("#navRight > div").text("Scores").css("margin-left", "-35px");
 			$("#navLeft").hide();
 			$(".fullCoverText").removeClass("large small").addClass("medium");
 		} else if(newState == 1) {
+			$("#navLeft > div").text("Info").css("margin-left", "-15px");
 			if(fbFuncs.connected) {
 				$("#overlayFBScores, #navLeft, #navRight").show();
 				$(".fullCoverText").removeClass("medium small").addClass("large");
+				$("#navRight > div").text("Times").css("margin-left", "-30px");
 				var li = levelsCompleted[lNum];
 				$(".yourScore").text(li === undefined ? "None Yet!" : li.highScore);
 				$("#fbScoresInner").html("<div class='loading'></div>");
@@ -143,6 +146,7 @@ var scoreDisplay = {
 		} else if(newState == 2) {
 			$(".fullCoverText").removeClass("medium small").addClass("large");
 			$("#overlayFBTimes, #navLeft").show();
+			$("#navLeft > div").text("Scores").css("margin-left", "-35px");
 			$("#navRight").hide();
 			var li = levelsCompleted[lNum];
 			$(".yourTime").text(li === undefined ? "None Yet!" : GetTimeAsString((lNum == "E" || lNum == "Q") ? li.bestTime : (levelData[lNum].time - li.bestTime)));
