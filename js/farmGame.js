@@ -228,10 +228,11 @@ var wateringGame = {
 				types.splice(idx, 1);
 			}
 		} else if(difficulty < 18) {
-			var max = RandRange(1, 5);
+			var max = RandRange(1, 4);
 			for(var i = 0; i < max; i++) {
 				var idx = RandRange(0, types.length);
 				var mult = types[idx] == "pumpkin" ? 0.05 : ((types[idx] == "carrot" || types[idx] == "corn") ? 0.5 : 1);
+				if(mult < 1) { max -= 1; }
 				wateringGame.appendCropToShipment(types[idx], Math.floor(15 * mult), Math.floor(difficulty * 4 * mult));
 				types.splice(idx, 1);
 			}
@@ -249,6 +250,7 @@ var wateringGame = {
 	},
 	appendCropToShipment: function(crop, min, max) {
 		var count = RandRange(min, max);
+		if(count <= 0) { return; }
 		wateringGame.shipment[crop] = count;
 		$("#shipItems").append("<div class='infoBar " + crop + "' style='display:none'><span id='shipment_" + crop + "'>" + count + "</span></div>");
 	},
