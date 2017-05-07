@@ -22,7 +22,7 @@ var beeGarden = {
 		$(".infoBar.main > span").text("0");
 		$(".comboParticle,.poof,.bee,.scoreParticle,.timeParticle").remove();
 		$(".overlayButtons, .overlayAltText,.overlayTap, #overlayText, #overlayButtonsNav,#mainGame,#menuBtn,.gameOverTap,.infoBar,#mainCropInfo,#pause").hide();
-		$(".fullCoverText").removeClass("large medium small").addClass("medium");
+		$(".fullCoverText").removeClass("large medium shmedium small").addClass("medium");
 		$("#cropGame,#gardenCropInfo,#leave,#beeFacts").show();
         $("#pollenCount").text("Pollen Gathered: " + settings.pollen);
         $("#shipText").text("Your Garden");

@@ -78,7 +78,6 @@ var menuNav = {
 		if(levelsCompleted[levelNum] !== undefined) {
 			var li = levelsCompleted[levelNum];
 			var dt = li.bestTime;
-			if(!isNaN(levelNum)) { dt = thisLevel.time - li.bestTime; }
 			$("#levelInfoScoreSection").html("Best Score: " + li.highScore + "<br>Best Time: " + GetTimeAsString(dt));
 		} else {
 			$("#levelInfoScoreSection").html("");
@@ -107,7 +106,7 @@ var menuNav = {
 		music.stopFull("happy");
 		music.play("nochains");
 		$(".overlayTap, .overlayButtons, .overlayAltText").hide();
-		$(".fullCoverText").removeClass("large medium small");
+		$(".fullCoverText").removeClass("large medium shmedium small");
 		$("#tutorial, #pointerFinal, #pointer").hide();
 		if(wateringGame.inStoryMode) {
 			menuNav.switchToLevelSelect();

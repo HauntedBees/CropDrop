@@ -38,7 +38,7 @@ var wateringGame = {
 		wateringGame.paused = true;
 		$("#pointer,.overlayButtons,.overlayAltText,#beeFacts").hide();
 		$(".overlayTap, #overlayText, #overlayButtonsNav").show();
-		$(".fullCoverText").removeClass("large medium small").addClass("medium");
+		$(".fullCoverText").removeClass("large medium shmedium small").addClass("medium");
 		if(wateringGame.inStoryMode) {
 			$("#overlayButtonsD").show();
 		} else {
@@ -179,17 +179,18 @@ var wateringGame = {
 		clearInterval(wateringGame.timerIdx);
 		music.stopFull("happy");
 		var appendedHtml = "";
-		var res = SaveLevelStats(wateringGame.levelNum, wateringGame.score, wateringGame.timer);
+		var res = SaveLevelStats(wateringGame.levelNum, wateringGame.score, wateringGame.lastedTime);
 		if(res > 0) {
-			appendedHtml += "<br><span class='additionalScoreInfo'>";
+			appendedHtml += "<span class='additionalScoreInfo'>";
 			if((res & 2) == 2) { appendedHtml += " New High Score!"; }
 			if((res & 1) == 1) { appendedHtml += " New Best Time!"; }
 			appendedHtml += "</span>";
 		}
+		appendedHtml += "<br><span class='additionalScoreInfo'>Your Score: " +  wateringGame.score + "</span><span class='additionalScoreInfo'>Your Time: " + GetTimeAsString(wateringGame.lastedTime) + "</span>";
 		SaveGame();
-		$(".fullCoverText").removeClass("large medium small");
+		$(".fullCoverText").removeClass("large medium shmedium small");
 		$(".overlayButtons, .overlayAltText").hide();
-		$(".fullCoverText").addClass("small");
+		$(".fullCoverText").addClass("shmedium");
 		sounds.playSound("win");
 		$(".overlayTap").show();
 		setTimeout(function() { $("#overlayButtonsC").show(); }, 1000);
@@ -336,12 +337,13 @@ var wateringGame = {
 				appendedHtml += "</span>";
 			}
 		}
+		appendedHtml += "<br><span class='additionalScoreInfo'>Your Score: " +  wateringGame.score + "</span><span class='additionalScoreInfo'>Your Time: " + GetTimeAsString(wateringGame.lastedTime) + "</span>";
 		$(".overlayButtons, .overlayAltText").hide();
-		$(".fullCoverText").removeClass("large medium small");
+		$(".fullCoverText").removeClass("large medium shmedium small");
 		$(".overlayTap").show();
 		setTimeout(function() { $("#overlayButtonsB").show(); }, 1000);
-		$(".fullCoverText").addClass("small");
-		$("#overlayText").show().html("Game Over<br>" + t + appendedHtml);
+		$(".fullCoverText").addClass("shmedium");
+		$("#overlayText").show().html(t + appendedHtml);
 	},
 	advanceTimer: function() {
 		if(wateringGame.paused) { return; }

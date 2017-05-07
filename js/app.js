@@ -120,7 +120,7 @@ limitations under the License.*/
 		sounds.playSound("tap");
 		$(".overlayButtons, .overlayAltText").hide();
 		$(".overlayTap, #overlayButtonsA, #overlayText").show();
-		$(".fullCoverText").removeClass("large medium small");
+		$(".fullCoverText").removeClass("large medium shmedium small");
 		$("#overlayText").text("Paused");
 	});
 	$(".unpause").on("click", function() {

@@ -445,6 +445,7 @@ table .val { text-align: right; width: 15% }
 }
 .fullCoverText.large { min-height: 80%; top: 10% }
 .fullCoverText.medium { min-height: 60%; top: 20% }
+.fullCoverText.shmedium { min-height: 40%; top: 30% }
 .fullCoverText.small { min-height: 30%; top: 35% }
 
 .blockSpan { display: block }
@@ -454,6 +455,7 @@ table .val { text-align: right; width: 15% }
 	margin: 0 auto;
 	width: 80%;
 }
+.additionalScoreInfo { display: block }
 
 #navRight { right: 5px }
 #navLeft { left: 5px }

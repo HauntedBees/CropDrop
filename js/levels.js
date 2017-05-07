@@ -140,7 +140,7 @@ var scoreDisplay = {
 					$(".yourTime").text("None Yet!");
 				} else {
 					$(".yourScore").text(li.highScore);
-					$(".yourTime").text(GetTimeAsString((lNum == "E" || lNum == "Q") ? li.bestTime : (levelData[lNum].time - li.bestTime)));
+					$(".yourTime").text(GetTimeAsString(li.bestTime));
 				}
 			}
 		} else if(newState == 2) {
@@ -149,7 +149,7 @@ var scoreDisplay = {
 			$("#navLeft > div").text("Scores").css("margin-left", "-35px");
 			$("#navRight").hide();
 			var li = levelsCompleted[lNum];
-			$(".yourTime").text(li === undefined ? "None Yet!" : GetTimeAsString((lNum == "E" || lNum == "Q") ? li.bestTime : (levelData[lNum].time - li.bestTime)));
+			$(".yourTime").text(li === undefined ? "None Yet!" : GetTimeAsString(li.bestTime));
 			$("#fbTimesInner").html("<div class='loading'></div>");
 			fbFuncs.getFriendScores(lNum, "time");
 		}

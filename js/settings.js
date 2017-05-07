@@ -11,7 +11,7 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.*/
-var SAVEDATAVERSION = "0.BEE";
+var SAVEDATAVERSION = "0.BEEP";
 var settings = {
 	device: "browser",
 	playSounds: true,
@@ -71,7 +71,11 @@ function SaveLevelStats(levelNum, score, time) {
 		var changes = 0;
 		var ld = levelsCompleted[levelNum];
 		if(score > ld.highScore) { ld.highScore = score; changes += 2; }
-		if(time > ld.bestTime) { ld.bestTime = time; changes += 1; }
+		if(levelNum == "E") {
+			if(time > ld.bestTime) { ld.bestTime = time; changes += 1; }
+		} else {
+			if(time < ld.bestTime) { ld.bestTime = time; changes += 1; }
+		}
 		levelsCompleted[levelNum] = ld;
 		if(changes > 0) {
 			fbFuncs.saveScore(levelNum, ld.highScore, ld.bestTime);
