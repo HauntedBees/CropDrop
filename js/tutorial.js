@@ -67,26 +67,47 @@ var tutorialHandler = {
 			$("#pointer").show();
 			if(properCoords == 0) {
 				var pos = $("#weedWhackBtn").position();
-				$("#pointer").animate({
-					left: (pos.left + 150) + "px",
-					top: (pos.top - 133) + "px"
-				}, 500);
+				if(window.innerHeight < window.innerWidth) { // landscape mode
+					$("#pointer").animate({
+						left: (pos.left + 80) + "px",
+						top: (pos.top - 83) + "px"
+					}, 500);
+				} else {
+					$("#pointer").animate({
+						left: (pos.left + 150) + "px",
+						top: (pos.top - 133) + "px"
+					}, 500);
+				}
 				return;
 			}
 			if(immediate) {
 				setTimeout(function() {
 					var pos = $("#crop" + properCoords[0] + "_" + properCoords[1]).position();
-					$("#pointer").css({
-						left: (pos.left + 150) + "px",
-						top: (pos.top - 133) + "px"
-					});
+					if(window.innerHeight < window.innerWidth) { // landscape mode
+						$("#pointer").animate({
+							left: (pos.left - 80) + "px",
+							top: (pos.top - 183) + "px"
+						}, 100);
+					} else {
+						$("#pointer").animate({
+							left: (pos.left + 150) + "px",
+							top: (pos.top - 133) + "px"
+						}, 100);
+					}
 				}, 100);
 			} else {
 				var pos = $("#crop" + properCoords[0] + "_" + properCoords[1]).position();
-				$("#pointer").animate({
-					left: (pos.left + 150) + "px",
-					top: (pos.top - 133) + "px"
-				}, 500);
+				if(window.innerHeight < window.innerWidth) { // landscape mode
+					$("#pointer").animate({
+						left: (pos.left - 80) + "px",
+						top: (pos.top - 183) + "px"
+					}, 500);
+				} else {
+					$("#pointer").animate({
+						left: (pos.left + 150) + "px",
+						top: (pos.top - 133) + "px"
+					}, 500);
+				}
 			}
 		}
 	},

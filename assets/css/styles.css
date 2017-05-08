@@ -219,7 +219,17 @@ button.nav:hover, button.nav:active { background: #EEEEEE; border-color: #CCCCCC
     margin-top: 480px;
 	width: 160px;
 }
-@keyframes loader { from { transform: rotate(0deg) } to { transform: rotate(360deg) } }
+@keyframes loader { 
+	from { 
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	} to { 
+		transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+	}
+}
 
 @keyframes jump1 { from { top: 0 } to { top: -192px } }
 @keyframes drop1 { from { top: 0 } to { top: 192px } }
@@ -230,7 +240,7 @@ button.nav:hover, button.nav:active { background: #EEEEEE; border-color: #CCCCCC
 @keyframes drop6 { from { top: 0 } to { top: 1152px } }
 @keyframes drop7 { from { top: 0 } to { top: 1344px } }
 @keyframes drop8 { from { top: 0 } to { top: 1536px } }
-.dropping { position: relative; animation-duration: 0.25s;  animation-iteration-count: 1; animation-fill-mode: forwards; }
+.dropping { position: relative; animation-duration: 0.25s;  animation-iteration-count: 1; animation-fill-mode: forwards }
 .dropping1 { animation-name: drop1 }
 .dropping2 { animation-name: drop2 }
 .dropping3 { animation-name: drop3 }
@@ -252,6 +262,7 @@ button.nav:hover, button.nav:active { background: #EEEEEE; border-color: #CCCCCC
 	width: 384px !important;
 	position: absolute;
     right: 0;
+	z-index: 9999;
 }
 @keyframes whack { 
 	0% { right: -10%; margin-top: 0 }
@@ -302,8 +313,8 @@ button.nav:hover, button.nav:active { background: #EEEEEE; border-color: #CCCCCC
 }
 
 /******************************* 4. PARTICLES *******************************/
-.crop_particle { position: absolute; z-index: 100 }
-.crop_particle.small { position: absolute; z-index: 150 }
+.crop_particle { position: absolute; z-index: 900 }
+.crop_particle.small { position: absolute; z-index: 950 }
 
 .scoreParticle { right: 15% }
 .timeParticle { left: 40% }
@@ -584,4 +595,107 @@ br.gap { line-height: 1.5 }
 	width: 100%;
 	border: 1px solid black;
 	background-color: #FFFFFF;
+}
+
+/****************************** 9. WIDESCREEN *******************************/
+@media (orientation: landscape) {
+	.chrome { zoom: 66% }
+	#logo { margin-top: 10px; width: 25% }
+	.bottom { font-size: 32px !important }
+	.bottom img { height: 48px; margin-bottom: -10px }
+	#levelSelBtn > span:first-child { font-size: 48px }
+	#levelSelBtn > span:last-child { font-size: 32px }
+	button {
+		border-width: 2px;
+		font-size: 16px;
+		margin: 10px auto;
+		padding: 12px 24px;
+	}
+	.fancyButton.mode > span:first-child { font-size: 36px }
+	.fancyButton.mode > span:last-child { font-size: 28px }
+	.fancyButton { padding: 3px 10px }
+	.fancyButton.mode { width: 250px }
+	.extraOption {
+		margin: -20px -40px;
+		transform: scale(0.5);
+		-ms-transform: scale(0.5);
+		-webkit-transform: scale(0.5);
+	}
+	.infoBar {
+		transform: scale(0.5);
+		-ms-transform: scale(0.5);
+		-webkit-transform: scale(0.5);
+		margin: -14px -70px;
+	}
+	#optionsMenu > div, #aboutMenu > div, #errorMessage > div { font-size: 36px }
+	#license { font-size: 24px }
+	#aboutMenu p, #aboutMenu li, #license { font-size: 16px }
+	#aboutInner { height: 80% }
+	.cropRow > .sprite { margin: -64px }
+	.crop_particle, #pointer, .cropRow > .sprite {
+		transform: scale(0.3333333333333333333);
+		-ms-transform: scale(0.333333333333333);
+		-webkit-transform: scale(0.3333333333333);
+	}
+	.crop { margin-bottom: -64px }
+	#shipInfo { border-width: 2px }
+	#shipText {
+		border-bottom-width: 2px;
+		font-size: 16px;
+		padding: 2px;
+	}
+	#shipItems { height: 36px }
+	#shipItems > .infoBar { margin-top: -30px }
+	.gardenInfo { font-size: 12px }
+	#pollenCount {
+		font-size: 16px;
+		min-width: 100px;
+	}
+	.fullCoverText { font-size: 24px }
+	.overlayText > span { font-size: 16px; font-weight: normal }
+
+	.bigButton {
+		font-size: 48px;
+		height: 125px;
+		width: 300px;
+	}
+	.medButton { 
+		font-size: 42px;
+		height: 100px;
+		padding-bottom: 50px;
+		width: 250px;
+	}
+	.smalButton {
+		font-size: 36px;
+		height: 75px;
+		padding-bottom: 50px;
+		width: 200px;
+	}
+	.strechSmalButton {
+		font-size: 36px;
+		height: 75px;
+		padding-bottom: 50px;
+		min-width: 280px;
+		width: 280px;
+	}
+
+	button.nav { font-size: 96px }
+	.scoreParticle { right: 35% }
+
+	.row7 { z-index: 200 }
+	.row6 { z-index: 300 }
+	.row5 { z-index: 400 }
+	.row4 { z-index: 500 }
+	.row3 { z-index: 600 }
+	.row2 { z-index: 700 }
+	.row1 { z-index: 800 }
+	.row0 { z-index: 900 }
+
+	.textbox > div { font-size: 20px; padding-top: 5px } 
+	#tutorial { height: 60px }
+
+	#levelInfo { height: 50% }
+	#levelInfo > div { font-size: 48px }
+	#levelInfoScoreSection { font-size: 36px !important }
+	#levelInfoButtons > button { display: inline-block}
 }

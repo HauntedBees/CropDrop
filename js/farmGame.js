@@ -528,6 +528,9 @@ var wateringGame = {
 						for(var p = 0; p < pollenCount; p++) {
 							var $poof = $("<div class='crop_particle sprite small poof'>");
 							var rotation = "rotate(" + Math.floor(Math.random() * 360) + "deg)";
+							var posMult = 1;
+							if(window.innerHeight < window.innerWidth) { posMult = 0.9; } // landscape mode
+							rotation = rotation + " " + $poof.css("transform");
 							$poof.css({
 								"-ms-transform": rotation,
 								"-webkit-transform": rotation,
@@ -537,12 +540,12 @@ var wateringGame = {
 							var dx = p - pollenCenterX;
 							var path = new $.path.bezier({
 								start: {
-									x: pollenPos.left,
-									y: pollenPos.top
+									x: pollenPos.left * posMult,
+									y: pollenPos.top * posMult
 								},
 								end: {
-									x: pollenPos.left + (dx * 500), 
-									y: pollenPos.top + 4000
+									x: (pollenPos.left + (dx * 500)) * posMult, 
+									y: (pollenPos.top + 4000) * posMult
 								}
 							});
 							$poof.animate({path: path}, 2000, "swing", function() { $(this).remove() });
@@ -562,25 +565,28 @@ var wateringGame = {
 					var $newGuy = $("<div class='crop_particle sprite c_" + tile.type + "'>");
 					var rotation = Math.floor(Math.random() * 360);
 					var pos = $("#crop" + x + "_" + y).position();
+					var posMult = 1;
+					if(window.innerHeight < window.innerWidth) { posMult = 0.9; } // landscape mode
 					$("#cropGame").append($newGuy);
 					var path = new $.path.bezier({
 						start: {
-							x: pos.left,
-							y: pos.top
+							x: pos.left * posMult,
+							y: pos.top * posMult
 						},
 						end: {
-							x: pos.left + (x == centerx ? 0 : (x < centerx ? -500 : 500)), 
-							y: pos.top + 4000
+							x: (pos.left + (x == centerx ? 0 : (x < centerx ? -500 : 500)))  * posMult, 
+							y: (pos.top + 4000) * posMult
 						}
 					});
+					var bonusRot = " " + $newGuy.css("transform");
 					$newGuy.animate({path: path}, 2000, "swing", function() { $(this).remove() });
 					$({deg: 0}).animate({deg: rotation}, {
 						duration: 1500, 
 						step: function(now) {
 							$newGuy.css({
-								transform: "rotate(" + now + "deg)",
-								"-ms-transform": "rotate(" + now + "deg)",
-								"-webkit-transform": "rotate(" + now + "deg)"
+								transform: "rotate(" + now + "deg)" + bonusRot,
+								"-ms-transform": "rotate(" + now + "deg)" + bonusRot,
+								"-webkit-transform": "rotate(" + now + "deg)" + bonusRot
 							});
 						}
 					});

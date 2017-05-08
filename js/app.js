@@ -52,24 +52,17 @@ limitations under the License.*/
 		}, false);
 		document.addEventListener("backbutton", function(e) {
 			e.preventDefault();
-			if($("body").attr("data-inMenu") == "true") {
-				menuNav.exitSettingsOrAbout();
-			} else if($("body").attr("data-state") == "levelSelect") {
-				menuNav.returnToMainMenu();
-			} else if($("body").attr("data-state") == "mainMenu") {
-				menuNav.exitApp();
-			} else if($("body").attr("data-state") == "game") {
-				menuNav.backInGame();
-			}
+			BackPress();
 			return false;
 		}, false);
 	}, false);
 	document.body.className = "browser";
+	if(navigator.userAgent.indexOf("Chrome") != -1 )  { document.body.className += " chrome"; }
 	$("body").attr("data-state", "mainMenu");
 	$("body").attr("data-inMenu", "false");
 	LoadGame();
 	music.play("nochains");
-	var html = "<div class='sprite' data-x='A' data-y='B' id='cropA_B'></div>";
+	var html = "<div class='sprite rowB' data-x='A' data-y='B' id='cropA_B'></div>";
 	var res = "";
 	for(var y = 0; y < 8; y++) {
 		res += "<div class='cropRow'>";
@@ -80,6 +73,13 @@ limitations under the License.*/
 	}
 	$("#cropGame").html(res);
 	$(".cropRow:nth-last-child(2)").addClass("whackerRow");
+
+	document.addEventListener("keyup", function(e) {
+		if (e.keyCode != 27) { return true; }
+		e.preventDefault();
+		BackPress();
+		return false;
+	}, false);
 
 	SetUpLevelSelect();
 	setInterval(function() { $(".anim").toggleClass("f2"); }, 250);
@@ -141,3 +141,15 @@ limitations under the License.*/
 	$("#loadingScreen").hide();
 	$("#mainMenu").show();
 }());
+
+function BackPress() {
+	if($("body").attr("data-inMenu") == "true") {
+		menuNav.exitSettingsOrAbout();
+	} else if($("body").attr("data-state") == "levelSelect") {
+		menuNav.returnToMainMenu();
+	} else if($("body").attr("data-state") == "mainMenu") {
+		menuNav.exitApp();
+	} else if($("body").attr("data-state") == "game") {
+		menuNav.backInGame();
+	}
+}
