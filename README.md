@@ -48,7 +48,10 @@ Crop Drop for Android was confirmed to work on Android OS versions 4, 6, and 7, 
 * Firefox (tested on Windows 8.1; browser v53): **A-OK.**
 * Chrome (tested on Windows 8.1, browser v57): **minor graphical quirks; major quirks when built from Cordova instead of just grabbing things from the _www_ folder, using the browser zoom function is recommended.**
 * Chrome Mobile (tested on Android OS 6, v55): **A-OK.**
-* Firefox Mobile (tested on Android OS 6, c53): **_Completely unplayable._**
+* Chrome Mobile (tested on iOS): **minor graphical quirks**
+* Safari Mobile (tested on iOS): **minor graphical quirks**
+* Waterfox Mobile (tested on Android): **minor graphical quirks**
+* Firefox Mobile (tested on Android OS 6, v53): **_Completely unplayable._**
 
 ## why
 I developed [Amicom](https://github.com/HauntedBees/Amicom), a virtual pet, and I found myself playing and enjoying one of the mini-games in it more than the rest of the game, so I decided to just branch that out into a more fleshed out project of its own.
