@@ -1,7 +1,7 @@
 # Crop Drop
 
 ## wut
-Crop Drop is a [Cordova](https://cordova.apache.org/)-based puzzle game.
+Crop Drop is a [Cordova](https://cordova.apache.org/)-based puzzle game. It runs natively on Android and some browsers (see compatibility below).
 
 ## license
 Crop Drop's source code is licensed with the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0). All media assets are licensed with the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license, with the exception of the following:
@@ -42,6 +42,13 @@ Additionally, [Cordova](https://cordova.apache.org/) is required to build the pr
 If running the game natively in your computer's browser, Cordova and these plugins aren't needed, but not all features may not be fully functional.
 
 The Cordova project files are not included in this repository, but creating a new project, including the above plugins, and putting the contents of this repo in the **www** path should get the job done.
+
+## compatibility
+Crop Drop for Android was confirmed to work on Android OS versions 4, 6, and 7, on Samsung, Motorola, LG, and Google phones. It should run on almost all browsers with some quirks. Confirmed browsers:
+* Firefox (tested on Windows 8.1; browser v53): **A-OK.**
+* Chrome (tested on Windows 8.1, browser v57): **minor graphical quirks; major quirks when built from Cordova instead of just grabbing things from the _www_ folder, using the browser zoom function is recommended.**
+* Chrome Mobile (tested on Android OS 6, v55): **A-OK.**
+* Firefox Mobile (tested on Android OS 6, c53): **_Completely unplayable._**
 
 ## why
 I developed [Amicom](https://github.com/HauntedBees/Amicom), a virtual pet, and I found myself playing and enjoying one of the mini-games in it more than the rest of the game, so I decided to just branch that out into a more fleshed out project of its own.

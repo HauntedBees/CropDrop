@@ -598,7 +598,13 @@ br.gap { line-height: 1.5 }
 }
 
 /****************************** 9. WIDESCREEN *******************************/
+.browser #shipText { display: none !important }
+.browser #shipItems { height: 198px !important }
+.browser #tutorial { top: 0 !important } 
 @media (orientation: landscape) {
+	.browser #shipText { display: block !important }
+	.browser #shipItems { height: 36px !important }
+	.browser #tutorial { top: auto !important } 
 	.chrome { zoom: 66% }
 	#logo { margin-top: 10px; width: 25% }
 	.bottom { font-size: 32px !important }
