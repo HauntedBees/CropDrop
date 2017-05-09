@@ -79,7 +79,7 @@ var beeGarden = {
                 var crop = wateringGame.board[y][x];
                 if(crop == 0 || crop.stage == crop.finalStage) { continue; }
                 crop.age += timeElapsed;
-                while(crop.age >= crop.timeToGrow) {
+                while(crop.age >= crop.timeToGrow && crop.stage < crop.finalStage) {
                     crop.age -= crop.timeToGrow;
                     crop.stage += 1;
                 }
