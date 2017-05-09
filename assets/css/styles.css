@@ -334,6 +334,7 @@ button.nav:hover, button.nav:active { background: #EEEEEE; border-color: #CCCCCC
 /********************************* 5. MENUS *********************************/
 #mainMenu { text-align: center }
 #logo { margin: 0 auto; left: 0; right: 0; margin-top: 360px; }
+#manual { font-size: 48px }
 
 #optionsMenu, #aboutMenu, #errorMessage {
 	background: #E88B00;
