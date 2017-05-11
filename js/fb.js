@@ -88,7 +88,7 @@ var fbFuncs = {
 						var html = "<table>";
 						for(var i = 0; i < data.result.length; i++) {
 							var res = data.result[i];
-							var scoreVal = (type == "time" ? GetTimeAsString(level < 100 ? (levelData[level].time - res.time) : res.time) : res.score);
+							var scoreVal = (type == "time" ? GetTimeAsString(res.time) : res.score);
 							html += template.replace(/\{0\}/g, res.picURL).replace(/\{1\}/g, res.name).replace(/\{2\}/g, scoreVal).replace(/\{3\}/g, (i + 1))
 											.replace(/\{4\}/g, (res.fbID == fbFuncs.authDetails.userID ? " class='that-me'" : ""));
 						}
