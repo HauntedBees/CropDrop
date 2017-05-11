@@ -44,10 +44,10 @@ limitations under the License.*/
 			$q = $this->pdo->prepare("SELECT COUNT(*) FROM cropUsers WHERE fbID = :i");
 			$q->execute(array("i" => $userId));
 			if(intval($q->fetchColumn()) == 0) {
-				$q2 = $this->pdo->prepare("INSERT INTO cropUsers (fbID, name, picURL) VALUES (:i, :n, :p)");
+				$q2 = $this->pdo->prepare("INSERT INTO cropUsers (fbID, name, picURL, created, modified) VALUES (:i, :n, :p, NOW(), NOW())");
 				$q2->execute(array("i" => $userId, "n" => $userName, "p" => $picURL));
 			} else {
-				$q2 = $this->pdo->prepare("UPDATE cropUsers SET name = :n, picURL = :p WHERE fbID = :i");
+				$q2 = $this->pdo->prepare("UPDATE cropUsers SET name = :n, picURL = :p, modified = NOW() WHERE fbID = :i");
 				$q2->execute(array("i" => $userId, "n" => $userName, "p" => $picURL));
 			}
 			echo json_encode(["success" => true, "result" => "Saved that shite!"]);
@@ -69,21 +69,22 @@ limitations under the License.*/
 			$q = $this->pdo->prepare("SELECT COUNT(*) FROM cropScores WHERE fbID = :i AND level = :l");
 			$q->execute(array("i" => $userId, "l" => $level));
 			if(intval($q->fetchColumn()) == 0) {
-				$q2 = $this->pdo->prepare("INSERT INTO cropScores (fbID, level, score, time) VALUES (:i, :l, :s, :t)");
+				$q2 = $this->pdo->prepare("INSERT INTO cropScores (fbID, level, score, time, posted) VALUES (:i, :l, :s, :t, NOW())");
 				$q2->execute(array("i" => $userId, "l" => $level, "s" => $score, "t" => $time));
 			} else {
-				$q2 = $this->pdo->prepare("UPDATE cropScores SET score = :s, time = :t WHERE fbID = :i AND level = :l");
+				$q2 = $this->pdo->prepare("UPDATE cropScores SET score = :s, time = :t, posted = NOW() WHERE fbID = :i AND level = :l");
 				$q2->execute(array("i" => $userId, "l" => $level, "s" => $score, "t" => $time));
 			}
 			echo json_encode(["success" => true, "result" => "Saved that shit!"]);
 		}
 		public function GetHighScoresOrTimes() {
-			if(!isset($_GET["users"])) { $this->Fail("Invalid User List A"); }
+			if(!isset($_GET["users"])) { $this->Fail("Invalid User List"); }
 			if(!isset($_GET["level"])) { $this->Fail("Invalid Level"); }
 			if(!isset($_GET["type"])) { $this->Fail("Invalid Type"); }
 			$level = $_GET["level"];
 			$type = $_GET["type"];
 			if(!ctype_digit($level) || $level <= 0 || $level > 101) { $this->Fail("Invalid Level"); }
+			$sortOrder = ($type == "score" || $level >= 100) ? "DESC" : "ASC";
 			if($type != "score" && $type != "time") { $this->Fail("Invalid Type"); }
 			
 			$users = $_GET["users"];
@@ -98,7 +99,7 @@ limitations under the License.*/
 				$inQueryArray[] = ":u$i";
 			}
 			$inQuery = implode(", ", $inQueryArray);
-			$q = $this->pdo->prepare("SELECT u.fbID, u.name, u.picURL, s.$type FROM cropScores s INNER JOIN cropUsers u ON s.fbID = u.fbID WHERE s.level = :l AND (s.fbID IN ($inQuery) OR s.fbID LIKE 'T%') ORDER BY s.$type DESC LIMIT 0, 10");
+			$q = $this->pdo->prepare("SELECT u.fbID, u.name, u.picURL, s.$type FROM cropScores s INNER JOIN cropUsers u ON s.fbID = u.fbID WHERE s.level = :l AND (s.fbID IN ($inQuery) OR s.fbID LIKE 'T%') ORDER BY s.$type $sortOrder LIMIT 0, 10");
 			$q->execute($params);
 			echo json_encode(["success" => true, "result" => $q->fetchAll(PDO::FETCH_ASSOC)]);
 		}
