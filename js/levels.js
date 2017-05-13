@@ -41,11 +41,6 @@ function SetUpLevelSelect() {
 		wateringGame.start(6, 8, 2, levelNum, levelNum == 0);
 		menuNav.switchIntoGame();
 	});
-	$("#sounds").on("click", function() {
-		settings.playSounds = !settings.playSounds;
-		$("#sounds").text(settings.playSounds ? "Sound On" : "Sound Off");
-		sounds.playSound("tap");
-	});
 	$("#whackerPos").on("click", function() {
 		settings.whackerRight = !settings.whackerRight;
 		$("#whackerPos").text(settings.whackerRight ? "Right-Handed" : "Left-Handed");
@@ -56,15 +51,46 @@ function SetUpLevelSelect() {
 		}
 		sounds.playSound("tap");
 	});
+	$("#sounds").on("click", function() {
+		settings.playSounds = !settings.playSounds;
+		$("#sounds").text(settings.playSounds ? "Sound On" : "Sound Off");
+		if(settings.playSounds) {
+			$("#soundSlider").show();
+			$("#soundSlider > .centernum").text(settings.soundVol);
+		} else {
+			$("#soundSlider").hide();
+		}
+		sounds.playSound("tap");
+	});
 	$("#musics").on("click", function() {
 		settings.playMusic = !settings.playMusic;
 		if(!settings.playMusic) {
 			music.stopAll();
+			$("#musicSlider").hide();
 		} else {
 			music.play("nochains");
+			$("#musicSlider").show();
+			$("#musicSlider > .centernum").text(settings.musicVol);
 		}
 		sounds.playSound("tap");
 		$("#musics").text(settings.playMusic ? "Music On" : "Music Off");
+	});
+	$("#soundSlider > .dir").on("click", function() {
+		var dir = $(this).hasClass("r") ? 1 : -1;
+		var newVal = settings.soundVol + dir;
+		if(newVal < 1) { newVal = 1; } else if(newVal > 10) { newVal = 10; }
+		settings.soundVol = newVal;
+		sounds.playSound("tap");
+		$("#soundSlider > .centernum").text(settings.soundVol);
+	});
+	$("#musicSlider > .dir").on("click", function() {
+		var dir = $(this).hasClass("r") ? 1 : -1;
+		var newVal = settings.musicVol + dir;
+		if(newVal < 1) { newVal = 1; } else if(newVal > 10) { newVal = 10; }
+		settings.musicVol = newVal;
+		music.updateVolume();
+		sounds.playSound("tap");
+		$("#musicSlider > .centernum").text(settings.musicVol);
 	});
 	$("#grafs").on("click", function() {
 		settings.HDgrafs = !settings.HDgrafs;

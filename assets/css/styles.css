@@ -175,6 +175,8 @@ button.nav:hover, button.nav:active { background: #EEEEEE; border-color: #CCCCCC
     font-size: 36px;
     margin-top: 40px;
 }
+button.dir { display: inline; padding: 12px 18px }
+button.centernum { display: inline; filter: brightness(0.9); padding: 12px 48px }
 
 .fancyButton {
 	background: #E88B00;
@@ -354,7 +356,7 @@ button.nav:hover, button.nav:active { background: #EEEEEE; border-color: #CCCCCC
 	width: 85%;
 	z-index: 1002;
 }
-#optionsMenu { height: 60%; top: 20% }
+#optionsMenu { height: 80%; top: 10% }
 #aboutMenu { height: 75%; top: 10% }
 #aboutContainer { height: 100% }
 #optionsOverlay {

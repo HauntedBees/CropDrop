@@ -11,11 +11,13 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.*/
-var SAVEDATAVERSION = "1";
+var SAVEDATAVERSION = "1s";
 var settings = {
 	device: "browser",
 	playSounds: true,
+	soundVol: 10,
 	playMusic: true,
+	musicVol: 10,
 	wasUsingFB: false,
 	HDgrafs: false,
 	whackerRight: true, 
@@ -35,7 +37,7 @@ var sounds = {
 	playSound: function(id) {
 		if(!settings.playSounds) { return; }
 		var s = new Audio(sounds[id]);
-		s.volume = id.indexOf("harvest") == 0 ? 0.4 : 0.7;
+		s.volume = (id.indexOf("harvest") == 0 ? 0.4 : 0.7)  * (settings.soundVol / 10);
 		s.play();
 	}
 };
@@ -45,10 +47,14 @@ var music = {
 	playFresh: function (id) { music[id].currentTime = 0; music.play(id); },
 	play: function (id) {
 		if(settings.playMusic) {
-			music[id].volume = 0.5;
+			music[id].volume = 0.5 * (settings.musicVol / 10);
 			music[id].loop = true;
 			music[id].play();
 		}
+	},
+	updateVolume: function() {
+		music["happy"].volume = 0.5 * (settings.musicVol / 10);
+		music["nochains"].volume = 0.5 * (settings.musicVol / 10);
 	},
 	stopFull: function (id) { music[id].pause(); music[id].currentTime = 0; },
 	stop: function (id) { music[id].pause(); },

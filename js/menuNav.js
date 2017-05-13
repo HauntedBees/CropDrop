@@ -26,7 +26,19 @@ var menuNav = {
 		sounds.playSound("tap");
 		$("#whackerPos").text(settings.whackerRight ? "Right-Handed" : "Left-Handed");
 		$("#sounds").text(settings.playSounds ? "Sound On" : "Sound Off");
+		if(settings.playSounds) {
+			$("#soundSlider").show();
+			$("#soundSlider > .centernum").text(settings.soundVol);
+		} else {
+			$("#soundSlider").hide();
+		}
 		$("#musics").text(settings.playMusic ? "Music On" : "Music Off");
+		if(settings.playMusic) {
+			$("#musicSlider").slideDown();
+			$("#musicSlider > .centernum").text(settings.musicVol);
+		} else {
+			$("#musicSlider").hide();
+		}
 		$("#grafs").text(settings.HDgrafs ? "HD Graphics On" : "HD Graphics Off");
 		$("#acc").text(settings.accGrafs == 0 ? "Standard Vision" : (settings.accGrafs == 1 ? "Colored Outlines" : "Colorblind Mode"));
 		$("#optionsMenu,#optionsOverlay").show();
