@@ -38,6 +38,7 @@ Additionally, [Cordova](https://cordova.apache.org/) is required to build the pr
 * [NativeStorage](https://github.com/TheCocoaProject/cordova-plugin-nativestorage)
 * [Facebook SDK Version 4](https://www.npmjs.com/package/cordova-plugin-facebook4)
 * [ExitApp](https://github.com/gaqzi/cordova-plugin-exitapp)
+* [YANAP](https://github.com/Wizcorp/cordova-plugin-yanap)
 
 If running the game natively in your computer's browser, Cordova and these plugins aren't needed, but not all features may not be fully functional.
 

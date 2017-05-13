@@ -29,16 +29,25 @@ var settings = {
 };
 var levelsCompleted = {};
 var sounds = {
-	bweep: "assets/sounds/whoppy.wav", wood: "assets/sounds/woodclick.wav", tap: "assets/sounds/tap.wav",
+	bweep: "assets/sounds/whoppy.wav", wood: "assets/sounds/woodclick.wav", tap: "assets/sounds/tap3.wav",
 	yes: "assets/sounds/confirmyes.wav", win: "assets/sounds/win.wav", lose: "assets/sounds/lose.wav",
 	harvest1: "assets/sounds/harvest1.wav", harvest2: "assets/sounds/harvest2.wav", harvest3: "assets/sounds/harvest3.wav", 
 	harvest4: "assets/sounds/harvest4.wav", harvest5: "assets/sounds/harvest5.wav", success: "assets/sounds/success.wav",
 	newShipment: "assets/sounds/notify.wav", completeShipment: "assets/sounds/chaching.wav", mow: "assets/sounds/mow.wav", 
 	playSound: function(id) {
 		if(!settings.playSounds) { return; }
-		var s = new Audio(sounds[id]);
-		s.volume = (id.indexOf("harvest") == 0 ? 0.4 : 0.7)  * (settings.soundVol / 10);
-		s.play();
+		if(settings.device == "android") {
+			var Yanap = cordova.plugins.Yanap;
+			var s = new Yanap.AudioInstance(Yanap.AUDIO_TYPE.SOUND);
+			s.load("file:///android_asset/www/" + sounds[id]);
+			var volume = (id.indexOf("harvest") == 0 ? 0.4 : 0.7)  * (settings.soundVol / 10);
+			s.setVolume(volume, volume);
+			s.play();
+		} else {
+			var s = new Audio(sounds[id]);
+			s.volume = (id.indexOf("harvest") == 0 ? 0.4 : 0.7)  * (settings.soundVol / 10);
+			s.play();
+		}
 	}
 };
 var music = {

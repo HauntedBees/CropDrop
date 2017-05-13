@@ -45,7 +45,7 @@ var wateringGame = {
 			$("#overlayButtonsE").show();
 		}
 		if(!isTutorial) { $("#navRight").show(); } else { $("#navRight").hide(); }
-		scoreDisplay.switchState(-scoreDisplay.navState);
+		scoreDisplay.switchState(-scoreDisplay.navState, true);
 		$("#navLeft").hide();
 		wateringGame.shipment = {};
 		$("#shipItems").html("<div class='infoBar OK'></div>");

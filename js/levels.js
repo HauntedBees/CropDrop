@@ -125,8 +125,8 @@ function SetUpLevelSelect() {
 }
 var scoreDisplay = {
 	navState: 0,
-	switchState: function(delta) {
-		sounds.playSound("wood");
+	switchState: function(delta, noSound) {
+		if(!noSound) { sounds.playSound("wood"); }
 		var newState = scoreDisplay.navState + delta;
 		if(newState < 0 || newState > 2) { return; }
 		if(scoreDisplay.navState == 0) {
