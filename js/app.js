@@ -33,6 +33,15 @@ limitations under the License.*/
 		document.addEventListener("pause", function() {
 			if($("body").attr("data-state") == "game") {
 				music.stop("happy");
+				if(!wateringGame.paused) {
+					wateringGame.paused = true;
+					$(".sprite").addClass("paused");
+					sounds.playSound("tap");
+					$(".overlayButtons, .overlayAltText").hide();
+					$(".overlayTap, #overlayButtonsA, #overlayText").show();
+					$(".fullCoverText").removeClass("large medium shmedium small");
+					$("#overlayText").text("Paused");
+				}
 			} else {
 				music.stop("nochains");
 			}
