@@ -4,7 +4,7 @@
 Crop Drop is a [Cordova](https://cordova.apache.org/)-based puzzle game. It runs natively on Android and some browsers (see compatibility below).
 
 ## license
-Crop Drop's source code is licensed with the [Apache 2.0 License](http://www.apache.org/licenses/LICENSE-2.0). All media assets are licensed with the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license, with the exception of the following:
+Crop Drop's source code is licensed with the [GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html). All media assets are licensed with the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license, with the exception of the following:
 *   "[Happy Arcade Tune](http://opengameart.org/content/happy-arcade-tune)" by [rezoner](http://opengameart.org/users/rezoner), available under the [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/) license. Copyright © 2013 rezoner.
 *   "[No Chains (Instrumental Version)](http://opengameart.org/content/no-chainsinstrumental-version)" by [mvrasseli](http://opengameart.org/users/mvrasseli), available under the [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/) license. Copyright © 2014 Marcus Rasseli.
 *   "[Country Style Guitar Intro](https://www.freesound.org/people/Soughtaftersounds/sounds/145416/)" by [Varazuvi](http://www.varazuvi.com), available under the [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/) license. Copyright © 2011 Varavuzi™.
