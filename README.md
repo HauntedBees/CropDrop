@@ -33,7 +33,7 @@ The following JavaScript files need to be added to the "lib" directory:
 * [jQuery.path v0.0.1](https://github.com/weepy/jquery.path) or any other compatible version (as **lib/jquery.path.js**).
 * [FastClick Polyfill v1.0.1](https://github.com/ftlabs/fastclick) or any other compatible version as (**lib/fastclick.js**).
 
-Additionally, [Cordova](https://cordova.apache.org/) is required to build the project to a native mobile app, and the following plugins are used:
+Additionally, [Cordova@9.0.0](https://cordova.apache.org/) is required to build the project to a native mobile app, and the following plugins are used:
 * [StatusBar](https://github.com/apache/cordova-plugin-statusbar)
 * [NativeStorage](https://github.com/TheCocoaProject/cordova-plugin-nativestorage)
 * [ExitApp](https://github.com/gaqzi/cordova-plugin-exitapp)
@@ -44,7 +44,7 @@ If running the game natively in your computer's browser, Cordova and these plugi
 The Cordova project files are not included in this repository, but creating a new project, including the above plugins, and putting the contents of this repo in the **www** path should get the job done.
 
 ## compatibility
-Crop Drop for Android was confirmed to work on Android OS versions 4, 6, and 7, on Samsung, Motorola, LG, and Google phones. It should run on almost all browsers with some quirks. Confirmed browsers:
+Crop Drop for Android was confirmed to work on Android OS versions 4, 6, and 7, on Samsung, Motorola, LG, and Google phones. The web-app version should run on almost all browsers with some quirks. Confirmed browsers:
 * Firefox (tested on Windows 8.1; browser v53): **A-OK.**
 * Chrome (tested on Windows 8.1, browser v57): **minor graphical quirks; major quirks when built from Cordova instead of just grabbing things from the _www_ folder, using the browser zoom function is recommended.**
 * Chrome Mobile (tested on Android OS 6, v55): **A-OK.**
