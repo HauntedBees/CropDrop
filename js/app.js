@@ -23,7 +23,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		} else {
 			StatusBar.hide();
 		}
-		setTimeout(fbFuncs.fbCheck, 500);
 		FastClick.attach(document.body);
 		document.addEventListener("pause", function() {
 			if($("body").attr("data-state") == "game") {

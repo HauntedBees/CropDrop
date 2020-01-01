@@ -36,7 +36,6 @@ The following JavaScript files need to be added to the "lib" directory:
 Additionally, [Cordova](https://cordova.apache.org/) is required to build the project to a native mobile app, and the following plugins are used:
 * [StatusBar](https://github.com/apache/cordova-plugin-statusbar)
 * [NativeStorage](https://github.com/TheCocoaProject/cordova-plugin-nativestorage)
-* [Facebook SDK Version 4](https://www.npmjs.com/package/cordova-plugin-facebook4)
 * [ExitApp](https://github.com/gaqzi/cordova-plugin-exitapp)
 * [YANAP](https://github.com/Wizcorp/cordova-plugin-yanap)
 

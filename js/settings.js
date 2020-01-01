@@ -82,7 +82,6 @@ function RandRange(min, max) {
 function SaveLevelStats(levelNum, score, time) {
 	if(levelsCompleted[levelNum] === undefined) {
 		levelsCompleted[levelNum] = { highScore: score, bestTime: time };
-		fbFuncs.saveScore(levelNum, score, time);
 		SaveGame();
 		return 3;
 	} else {
@@ -96,7 +95,6 @@ function SaveLevelStats(levelNum, score, time) {
 		}
 		levelsCompleted[levelNum] = ld;
 		if(changes > 0) {
-			fbFuncs.saveScore(levelNum, ld.highScore, ld.bestTime);
 			SaveGame();
 		}
 		return changes;

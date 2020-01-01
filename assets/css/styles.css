@@ -707,11 +707,4 @@ br.gap { line-height: 1.5 }
 	#levelInfo > div { font-size: 48px }
 	#levelInfoScoreSection { font-size: 36px !important }
 	#levelInfoButtons > button { display: inline-block }
-	#fbUserInfo img, #fbScoresInner img {
-		border-left: 50px none;
-		border-radius: 25px;
-		margin: -10px auto;
-		width: 50px;
-	}
-	#fbUserInfo { font-size: 16px }
 }
