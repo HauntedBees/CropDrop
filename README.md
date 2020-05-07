@@ -5,8 +5,8 @@ Crop Drop is a [Cordova](https://cordova.apache.org/)-based puzzle game. It runs
 
 ## license
 Crop Drop's source code is licensed with the [GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html). All media assets are licensed with the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) license, with the exception of the following:
-*   "[Happy Arcade Tune](http://opengameart.org/content/happy-arcade-tune)" by [rezoner](http://opengameart.org/users/rezoner), available under the [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/) license. Copyright © 2013 rezoner.
-*   "[No Chains (Instrumental Version)](http://opengameart.org/content/no-chainsinstrumental-version)" by [mvrasseli](http://opengameart.org/users/mvrasseli), available under the [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/) license. Copyright © 2014 Marcus Rasseli.
+*   "[Happy Arcade Tune](https://opengameart.org/content/happy-arcade-tune)" by [rezoner](https://opengameart.org/users/rezoner), available under the [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/) license. Copyright © 2013 rezoner.
+*   "[No Chains (Instrumental Version)](https://opengameart.org/content/no-chainsinstrumental-version)" by [mvrasseli](https://opengameart.org/users/mvrasseli), available under the [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/) license. Copyright © 2014 Marcus Rasseli.
 *   "[Country Style Guitar Intro](https://www.freesound.org/people/Soughtaftersounds/sounds/145416/)" by [Varazuvi](http://www.varazuvi.com), available under the [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/) license. Copyright © 2011 Varavuzi™.
 *   "[Menu Click - Two Tone](https://www.freesound.org/people/Soughtaftersounds/sounds/145442/)" by [Varazuvi](http://www.varazuvi.com), available under the [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/) license. Copyright © 2011 Varavuzi™.
 *   "[success.wav](https://www.freesound.org/people/grunz/sounds/109662/)" by [grunz](https://www.freesound.org/people/grunz/), available under the [CC-BY 3.0](https://creativecommons.org/licenses/by/3.0/) license. Copyright © 2010 grunz.
@@ -33,10 +33,9 @@ The following JavaScript files need to be added to the "lib" directory:
 * [jQuery.path v0.0.1](https://github.com/weepy/jquery.path) or any other compatible version (as **lib/jquery.path.js**).
 * [FastClick Polyfill v1.0.1](https://github.com/ftlabs/fastclick) or any other compatible version as (**lib/fastclick.js**).
 
-Additionally, [Cordova](https://cordova.apache.org/) is required to build the project to a native mobile app, and the following plugins are used:
+Additionally, [Cordova@9.0.0](https://cordova.apache.org/) is required to build the project to a native mobile app, and the following plugins are used:
 * [StatusBar](https://github.com/apache/cordova-plugin-statusbar)
 * [NativeStorage](https://github.com/TheCocoaProject/cordova-plugin-nativestorage)
-* [Facebook SDK Version 4](https://www.npmjs.com/package/cordova-plugin-facebook4)
 * [ExitApp](https://github.com/gaqzi/cordova-plugin-exitapp)
 * [YANAP](https://github.com/Wizcorp/cordova-plugin-yanap)
 
@@ -45,7 +44,7 @@ If running the game natively in your computer's browser, Cordova and these plugi
 The Cordova project files are not included in this repository, but creating a new project, including the above plugins, and putting the contents of this repo in the **www** path should get the job done.
 
 ## compatibility
-Crop Drop for Android was confirmed to work on Android OS versions 4, 6, and 7, on Samsung, Motorola, LG, and Google phones. It should run on almost all browsers with some quirks. Confirmed browsers:
+Crop Drop for Android was confirmed to work on Android OS versions 4, 6, and 7, on Samsung, Motorola, LG, and Google phones. The web-app version should run on almost all browsers with some quirks. Confirmed browsers:
 * Firefox (tested on Windows 8.1; browser v53): **A-OK.**
 * Chrome (tested on Windows 8.1, browser v57): **minor graphical quirks; major quirks when built from Cordova instead of just grabbing things from the _www_ folder, using the browser zoom function is recommended.**
 * Chrome Mobile (tested on Android OS 6, v55): **A-OK.**
@@ -58,4 +57,4 @@ Crop Drop for Android was confirmed to work on Android OS versions 4, 6, and 7, 
 I developed [Amicom](https://github.com/HauntedBees/Amicom), a virtual pet, and I found myself playing and enjoying one of the mini-games in it more than the rest of the game, so I decided to just branch that out into a more fleshed out project of its own.
 
 ## want to make changes?
-The game isn't even done yet hold your horses yo. Right now if you see something blatantly wrong feel free to make a pull request or let me know or whatever. Please use the Apache 2.0 License for all contributions. There is no guarantee that changes made to this project, even if put in the main branch, will be included in release versions of the game or ports of the game to other systems.
+Go for it, yo. Please use any GPL-compatible license for your contributions, although GNU GPLv3 is preferred. There is no guarantee that changes made to this project will be included in release versions of the game or ports of the game to other systems/storefronts.
