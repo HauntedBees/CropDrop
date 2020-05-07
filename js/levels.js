@@ -116,15 +116,12 @@ function SetUpLevelSelect() {
 		sounds.playSound("tap");
 		$("#acc").text(settings.accGrafs == 0 ? "Standard Vision" : (settings.accGrafs == 1 ? "Colored Outlines" : "Colorblind Mode"));
 	});
+	$("#timer").on("click", function() {
+		settings.timer = !settings.timer;
+		sounds.playSound("tap");
+		$("#timer").text(settings.timer ? "Endless Mode Time Limit On" : "Endless Mode Time Limit Off");
+	});
 	$("#gplay").on("click", function() { sounds.playSound("tap"); });
-	$("#fbConnect").on("click", function() {
-		sounds.playSound("tap");
-		fbFuncs.connectClick();
-	});
-	$("#fbConnectScores").on("click", function() {
-		sounds.playSound("tap");
-		fbFuncs.connectClick(true);
-	});
 }
 var scoreDisplay = {
 	navState: 0,
@@ -135,11 +132,7 @@ var scoreDisplay = {
 		if(scoreDisplay.navState == 0) {
 			$("#overlayText").hide();
 		} else if(scoreDisplay.navState == 1) {
-			if(fbFuncs.connected) {
-				$("#overlayFBScores").hide();
-			} else {
-				$("#overlayLocalStats").hide();
-			}
+			$("#overlayLocalStats").hide();
 		} else if(scoreDisplay.navState == 2) {
 			$("#overlayFBTimes").hide();
 		}
@@ -151,26 +144,16 @@ var scoreDisplay = {
 			$(".fullCoverText").removeClass("large small").addClass("medium");
 		} else if(newState == 1) {
 			$("#navLeft > div").text("Info").css("margin-left", "-15px");
-			if(fbFuncs.connected) {
-				$("#overlayFBScores, #navLeft, #navRight").show();
-				$(".fullCoverText").removeClass("medium small").addClass("large");
-				$("#navRight > div").text("Times").css("margin-left", "-30px");
-				var li = levelsCompleted[lNum];
-				$(".yourScore").text(li === undefined ? "None Yet!" : li.highScore);
-				$("#fbScoresInner").html("<div class='loading'></div>");
-				fbFuncs.getFriendScores(lNum, "score");
+			$(".fullCoverText").removeClass("large small").addClass("medium");
+			$("#overlayLocalStats, #navLeft").show();
+			$("#navRight").hide();
+			var li = levelsCompleted[lNum];
+			if(li === undefined) {
+				$(".yourScore").text("None Yet!");
+				$(".yourTime").text("None Yet!");
 			} else {
-				$(".fullCoverText").removeClass("large small").addClass("medium");
-				$("#overlayLocalStats, #navLeft").show();
-				$("#navRight").hide();
-				var li = levelsCompleted[lNum];
-				if(li === undefined) {
-					$(".yourScore").text("None Yet!");
-					$(".yourTime").text("None Yet!");
-				} else {
-					$(".yourScore").text(li.highScore);
-					$(".yourTime").text(GetTimeAsString(li.bestTime));
-				}
+				$(".yourScore").text(li.highScore);
+				$(".yourTime").text(GetTimeAsString(li.bestTime));
 			}
 		} else if(newState == 2) {
 			$(".fullCoverText").removeClass("medium small").addClass("large");
@@ -179,8 +162,6 @@ var scoreDisplay = {
 			$("#navRight").hide();
 			var li = levelsCompleted[lNum];
 			$(".yourTime").text(li === undefined ? "None Yet!" : GetTimeAsString(li.bestTime));
-			$("#fbTimesInner").html("<div class='loading'></div>");
-			fbFuncs.getFriendScores(lNum, "time");
 		}
 		scoreDisplay.navState = newState;
 	}

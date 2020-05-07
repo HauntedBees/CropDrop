@@ -18,12 +18,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 	document.addEventListener("deviceready", function () {
 		settings.device = device.platform.toLowerCase();
 		document.body.className = settings.device;
-		if(window.cordova.platformId == "browser") {
-			facebookConnectPlugin.browserInit("1873235692953878");
-		} else {
+		if(window.cordova.platformId !== "browser") {
 			StatusBar.hide();
 		}
-		setTimeout(fbFuncs.fbCheck, 500);
 		FastClick.attach(document.body);
 		document.addEventListener("pause", function() {
 			if($("body").attr("data-state") == "game") {
