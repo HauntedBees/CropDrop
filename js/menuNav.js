@@ -12,7 +12,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 var menuNav = {
 	showAbout: function() {
@@ -43,6 +43,7 @@ var menuNav = {
 			$("#musicSlider").hide();
 		}
 		$("#grafs").text(settings.HDgrafs ? "HD Graphics On" : "HD Graphics Off");
+		$("#timer").text(settings.timer ? "Endless Mode Time Limit On" : "Endless Mode Time Limit Off");
 		$("#acc").text(settings.accGrafs == 0 ? "Standard Vision" : (settings.accGrafs == 1 ? "Colored Outlines" : "Colorblind Mode"));
 		$("#optionsMenu,#optionsOverlay").show();
 		$("body").attr("data-inMenu", "true");

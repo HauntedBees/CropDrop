@@ -103,6 +103,9 @@ var wateringGame = {
 			if(wateringGame.inStoryMode) {
 				wateringGame.timer = levelData[levelNumber].time;
 				wateringGame.updateTimeDisplay();
+			} else if(settings.timer === false) {
+				wateringGame.timer = -1;
+				$("#cropTimer").text("Endless");
 			} else {
 				wateringGame.timer = 60;
 				$("#cropTimer").text("1:00");
@@ -307,7 +310,9 @@ var wateringGame = {
 				wateringGame.winLevel();
 			} else {
 				var tAdd = 20 * Math.min(Math.ceil(wateringGame.shipmentDifficulty / 4), 8);
-				wateringGame.timer += tAdd;
+				if(settings.timer === true) {
+					wateringGame.timer += tAdd;
+				}
 				wateringGame.shipmentDifficulty++;
 				if($(".timeParticle").length > 4) { $(".timeParticle:lt(3)").remove(); }
 				$("#game").append("<div class='anim timeParticle'><span>" + tAdd + "</span></div>");
@@ -352,6 +357,7 @@ var wateringGame = {
 	},
 	advanceTimer: function() {
 		if(wateringGame.paused) { return; }
+		if(settings.timer === false) { return; }
 		wateringGame.timer += (wateringGame.mode == 1) ? 1 : -1;
 		wateringGame.lastedTime += 1;
 		wateringGame.timeSinceLastBee += 1;
@@ -628,7 +634,9 @@ var wateringGame = {
 				if(wateringGame.mode == 2 && !wateringGame.inStoryMode) {
 					var dt = Math.min(180, Math.floor(finalScore / 300));
 					summationTime += dt;
-					wateringGame.timer += dt;
+					if(settings.timer === true) {
+						wateringGame.timer += dt;
+					}
 					wateringGame.updateTimeDisplay();
 				}
 			}

@@ -23,6 +23,7 @@ var settings = {
 	musicVol: 10,
 	wasUsingFB: false,
 	HDgrafs: false,
+	timer: true, 
 	whackerRight: true, 
 	accGrafs: 0,
 	lastGardenVisit: new Date(),
@@ -113,6 +114,7 @@ function SaveGame() {
 function LoadGame() {
 	var s = window.localStorage.getItem("settings" + SAVEDATAVERSION);
 	if(s != null) { settings = JSON.parse(s); }
+	if(settings.timer === undefined) { settings.timer = true; }
 	if(settings.HDgrafs) { $("#game").addClass("HD"); }
 	if(settings.accGrafs == 1) {
 		$("#game").addClass("acc");
