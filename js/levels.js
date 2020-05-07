@@ -116,11 +116,14 @@ function SetUpLevelSelect() {
 		sounds.playSound("tap");
 		$("#acc").text(settings.accGrafs == 0 ? "Standard Vision" : (settings.accGrafs == 1 ? "Colored Outlines" : "Colorblind Mode"));
 	});
+<<<<<<< HEAD
 	$("#timer").on("click", function() {
 		settings.timer = !settings.timer;
 		sounds.playSound("tap");
 		$("#timer").text(settings.timer ? "Endless Mode Time Limit On" : "Endless Mode Time Limit Off");
 	});
+=======
+>>>>>>> origin/master
 	$("#gplay").on("click", function() { sounds.playSound("tap"); });
 }
 var scoreDisplay = {
