@@ -336,7 +336,7 @@ button.centernum { display: inline; filter: brightness(0.9); padding: 12px 48px 
 /********************************* 5. MENUS *********************************/
 #mainMenu { text-align: center }
 #logo { margin: 0 auto; left: 0; right: 0; margin-top: 360px; }
-#manual { font-size: 48px }
+#manual, #privacypolicy { font-size: 48px }
 
 #optionsMenu, #aboutMenu, #errorMessage {
 	background: #E88B00;
